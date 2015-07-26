@@ -1,0 +1,222 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>Topic 1</title>
+
+		<meta name="description" content="Topic 1">
+		<meta name="author" content="Oscar Belmonte Fernandez">
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+		<link rel="stylesheet" href="../reveal/css/reveal.css">
+		<link rel="stylesheet" href="../reveal/css/theme/white.css" id="theme">
+
+		<!-- Code syntax highlighting -->
+		<!--<link rel="stylesheet" href="../reveal/lib/css/zenburn.css">-->
+
+		<!-- Code syntax highlighting -->
+		<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.6/styles/default.min.css">
+		<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.6/highlight.min.js"></script>
+
+		<link rel="stylesheet" href="../reveal/lib/css/zenburn.css">
+
+		<!-- Mis ajustes de css -->
+		<link rel="stylesheet" href="../reveal/css/mi.css">
+
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? '../reveal/css/print/pdf.css' : '../reveal/css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="../reveal/lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+
+		<div class="reveal">
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+				<section class="center">
+					<h1>Web Programming</h1>
+					<h2>Course Presentation</h2>
+					<h3>Introduction</h3>
+					<h4>Óscar Belmonte Fernández</h4>
+					<h4>Universitat Jaume I</h4>
+				</section>
+
+                <section>
+                    <h3>Content</h3>
+                    <ol>
+                        <li><a href="#/who_am_i">Who am I?</a></li>
+                        <li><a href="#/about">What is this course about?</a></li>
+                        <li><a href="#/other_courses">How is it related with other courses?</a></li>
+                        <li><a href="#/methodology">Methodology.</a></li>
+                    </ol>
+                </section>
+
+                <section id="who_am_i">
+                    <h3>Who am I?</h3>
+                    <p>Óscar Belmonte Fernández.</p>
+                    <p>Languages and Systems Department.</p>
+                    <p>New Imaging Technologies Institute.</p>
+                    <p>Espaitec 2.</p>
+                    <p>Office: UB1519SD.</p>
+                    <p>e-mail: oscar.belmonte@uji.es</p>
+                    <p>Web page: <a href="http://www3.uji.es/~belfern">www3.uji.es/~belfern</a></p>
+                    <p>Office phone: 964 38 76 83.</p>
+                    <p>Office hours: </p>
+                </section>
+
+                <section id="about">
+                    <h3>What this course is about?</h3>
+                    <p>You are going to know how to develop Rich Web Applications.</p>
+                    <p>I shall present you a whole stack to develop Web Applications:</p>
+                    <ul>
+                        <li>Client side.</li>
+                        <li>Server side.</li>
+                    </ul>
+                    <p>We are going to you the same programming language for both sides
+                        <strong>javascript</strong>.</p>
+                </section>
+
+                <section id="other_courses">
+                    <h3>How is it related with other courses?</h3>
+                    <p><strong>Software Engineering.</strong></p>
+                    <p><strong>Programming.</strong></p>
+                    <p><strong>Visualization.</strong></p>
+                    <p><strong>Databases.</strong></p>
+                    <p><strong>Geographic Information Systems.</strong></p>
+                </section>
+
+                <section id="methodology">
+                    <h3>Methodology</h3>
+                    <section>
+                        <p>3 ECTS credits = 75 h. (30 class + 45 exercises, project, study).</p>
+                        <p>Syllabus:</p>
+                        <div class="box">
+                            <p>Developing the client side:</p>
+                            <ol>
+                                <li>Bower.</li>
+                                <li>Bootstrap.</li>
+                                <li>AngularJS.</li>
+                            </ol>
+                        </div>
+                        <div class="box">
+                            <p>Developing the server side:</p>
+                            <ol>
+                                <li>npm.</li>
+                                <li>NodeJS.</li>
+                                <li>Express.</li>
+                                <li>MongoDB.</li>
+                                <li>Mongoose.</li>
+                            </ol>
+                        </div>
+                    </section>
+
+                    <section>
+                        <p>I shall present you lots of code, and you will try immediately.</p>
+<pre><code data-trim class="html">
+<div class="starter-template">
+    <h1>This is my first web page</h1>
+    <p>Hello {{myController.you}}. Today is {{myController.date()}}</p>
+    <table class="table table-hover">
+        <thead>
+        <tr><td><strong>Name</strong></td><td><strong>Surname</strong></td></tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="contact in myController.data">
+            <td>{{contact.name}}</td>
+            <td>{{contact.surname}}</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</code></pre>
+                    </section>
+
+                    <section>
+                        <p>Your are going to use lots of development tools...</p>
+                        <div style="float: left">
+                            <img height="200px" src="img/node-logo.svg" style="background: #000000">
+                        </div>
+                        <div style="float: left">
+                            <img src="img/AngularJS-large.png" height="200px">
+                        </div>
+                        <div style="float: left">
+                            <img height="200px" src="img/bower-logo.png">
+                        </div>
+                        <div style="float: left">
+                            <img src="img/npm-logo.svg" height="200px">
+                        </div>
+                        <div style="float: left">
+                            <img src="img/bootstrap.png" height="200px">
+                        </div>
+                    </section>
+
+                    <section>
+                        <p>Even more development tools...</p>
+                        <div style="float: left">
+                            <img src="img/mongodb-logo-large.png" height="200px">
+                        </div>
+                        <div style="float: left">
+                            <img src="img/express-logo.png" height="200px">
+                        </div>
+                        <div style="float: left">
+                            <img src="img/mongoose-logo.png" height="200px">
+                        </div>
+                        <div style="float: left">
+                            <img src="img/webstorm.jpg.png" height="200px">
+                        </div>
+                    </section>
+                </section>
+
+			</div>
+
+		</div>
+
+		<script src="../reveal/lib/js/head.min.js"></script>
+		<script src="../reveal/js/reveal.js"></script>
+
+		<script>
+
+			// Full list of configuration options available at:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: false,
+				width: 1366,
+				hight: 768,
+
+				transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+				// Optional reveal.js plugins
+				dependencies: [
+					{ src: '../reveal/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: '../reveal/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: '../reveal/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: '../reveal/plugin/highlight/highlight.js', async: true, condition: function() { return !!document.querySelector( 'pre code' ); }, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: '../reveal/plugin/zoom-js/zoom.js', async: true },
+					{ src: '../reveal/plugin/notes/notes.js', async: true }
+				]
+			});
+
+		</script>
+
+	</body>
+</html>
