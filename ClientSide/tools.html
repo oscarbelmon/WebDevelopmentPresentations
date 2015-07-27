@@ -58,6 +58,9 @@
 
         <section>
             <h3>Introduction</h3>
+            <p>There are lots of awesome tools to develop amazing Web Applications.</p>
+            <p>We are going to use some of the most popular, but there are lots of other either complementary or alternative tools.</p>
+            <p>This tools will help you in fast prototyping and development.</p>
         </section>
 
         <section>
@@ -66,12 +69,14 @@
                 <li><a href="#/npm">Node Package Manager (npm)</a>.</li>
                 <li><a href="#/bower">Bower</a>.</li>
                 <li><a href="#/webstorm">Webstorm</a>.</li>
+                <li><a href="#/summary">Summary</a>.</li>
             </ol>
         </section>
 
         <section id="npm">
             <h3>Node Package Manager (npm)</h3>
             <section>
+                <p><img src="../Presentation/img/npm-logo.svg" height="100px"></p>
                 <blockquote cite="https://docs.npmjs.com/getting-started/what-is-npm#what-is-npm">
                     &ldquo;npm makes it easy for JavaScript developers to share and reuse code, and it makes it easy to update the code that you're sharing.&rdquo;
                 </blockquote>
@@ -82,18 +87,79 @@
 
             <section>
                 <p>We can check that the installation is correct by:</p>
-                <pre><code class="dos">
-$node -v
+                <pre><code data-trim class="dos">
+$ node -v
+v0.12.7
+npm -v
+2.11.3
                 </code></pre>
+                <p>Wich are the version numbers for <strong>node</strong> and <strong>npm</strong>.</p>
             </section>
         </section>
 
         <section id="bower">
             <h3>Bower</h3>
+            <section>
+                <p><img src="../Presentation/img/bower-logo.png" height="100px"></p>
+                <blockquote cite="http://bower.io/">
+                    Web sites are made of lots of things — frameworks, libraries, assets, utilities, and rainbows. Bower manages all these things for you.
+                </blockquote>
+                <p>We install <strong>Bower</strong> using <strong>npm</strong></p>
+                <pre><code class="dos">
+$ npm install -g bower
+                </code></pre>
+            </section>
+
+            <section>
+                <p>We can check if the bower installation is ok by:</p>
+                <pre><code class="dos" data-trim>
+$ bower -v
+1.4.1
+                </code></pre>
+            </section>
+
+            <section>
+                <p><img src="../Presentation/img/bootstrap.png" width="100px"></p>
+                <p>Let's install <strong>Bootstrap</strong> using <strong>Bower</strong></p>
+                <pre><code class="dos" data-trim>
+$ mkdir FirstProject
+$ cd FirstProject
+$ bower install bootstrap
+bower bootstrap#*               cached git://github.com/twbs/bootstrap.git#3.3.5
+bower bootstrap#*             validate 3.3.5 against git://github.com/twbs/bootstrap.git#*
+bower jquery#>= 1.9.1           cached git://github.com/jquery/jquery.git#2.1.4
+bower jquery#>= 1.9.1         validate 2.1.4 against git://github.com/jquery/jquery.git#>= 1.9.1
+bower bootstrap#~3.3.5         install bootstrap#3.3.5
+bower jquery#>= 1.9.1          install jquery#2.1.4
+
+bootstrap#3.3.5 bower_components/bootstrap
+└── jquery#2.1.4
+
+jquery#2.1.4 bower_components/jquery
+                </code></pre>
+            </section>
         </section>
 
         <section id="webstorm">
             <h3>Webstorm</h3>
+            <section>
+                <p><img src="../Presentation/img/webstorm.jpg.png" height="100px"></p>
+                <blockquote cite="https://www.jetbrains.com/webstorm/">
+                    WebStorm is a lightweight yet powerful IDE, perfectly equipped for complex client-side development and server-side development with Node.js.
+                </blockquote>
+            </section>
+
+            <section>
+                <img src="img/webstorm.png" height="550px">
+            </section>
+        </section>
+
+        <section id="summary">
+            <h3>Summary</h3>
+            <p>In this lesson we have install some of the basic tools for developing web client applications.</p>
+            <p>We have installed <strong>Bower</strong> which is a package manager.</p>
+            <p>We have installed our first module <strong>Bootstrap</strong> by means of <strong>Bower</strong>.</p>
+            <p>We have also installed <strong>Webstorm</strong> which is an excellent Integrated Development Environment (IDE) for creating Web applications.</p>
         </section>
     </div>
 </div>
