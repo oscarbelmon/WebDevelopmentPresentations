@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+
+    <title>Scaffolding static Web content with Bootstrap</title>
+
+    <meta name="description" content="Scaffolding static Web content with Bootstrap">
+    <meta name="author" content="Oscar Belmonte Fernandez">
+
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+    <link rel="stylesheet" href="../reveal/css/reveal.css">
+    <link rel="stylesheet" href="../reveal/css/theme/white.css" id="theme">
+
+
+    <!-- Code syntax highlighting -->
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.6/styles/default.min.css">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.6/highlight.min.js"></script>
+
+    <link rel="stylesheet" href="../reveal/lib/css/zenburn.css">
+
+    <!-- Mis ajustes de css -->
+    <link rel="stylesheet" href="../reveal/css/mi.css">
+
+
+    <!-- Printing and PDF exports -->
+    <script>
+        var link = document.createElement( 'link' );
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = window.location.search.match( /print-pdf/gi ) ? '../reveal/css/print/pdf.css' : '../reveal/css/print/paper.css';
+        document.getElementsByTagName( 'head' )[0].appendChild( link );
+    </script>
+
+    <!--[if lt IE 9]>
+    <script src="../reveal/lib/js/html5shiv.js"></script>
+    <![endif]-->
+</head>
+
+<body>
+
+<div class="reveal">
+
+    <!-- Any section element inside of this container is displayed as a slide -->
+    <div class="slides">
+        <section class="center">
+            <h1>Web Programming</h1>
+            <h2>Client Side</h2>
+            <h3>Tools</h3>
+            <h4>Óscar Belmonte Fernández</h4>
+            <h4>Universitat Jaume I</h4>
+        </section>
+
+        <section>
+            <h3>Introduction</h3>
+        </section>
+
+        <section>
+            <h3>Content</h3>
+            <ol>
+                <li><a href="#/what_is_bootstrap">What is <strong>Bootstrap</strong>?</a></li>
+                <li><a href="#/creating_first_bootstrap">Creating our first <strong>Bootstrap</strong> Web page</a>.</li>
+                <li><a href="#/adding_content">Adding some content</a>.</li>
+                <li><a href="#/grid_system">The grid system</a>.</li>
+                <li><a href="#/sumary">Summary</a>.</li>
+            </ol>
+        </section>
+
+        <section id="what_is_bootstrap">
+            <h3>What is Bootstrap?</h3>
+            <img src="../Presentation/img/bootstrap.png" height="100px">
+            <blockquote cite="http://getbootstrap.com/">
+                Bootstrap is the most popular HTML, CSS, and JS framework for developing responsive, mobile first projects on the web.
+            </blockquote>
+        </section>
+
+        <section id="creating_first_bootstrap">
+            <h3>Creating our first Bootstrap Web page</h3>
+            <pre><code class="html" data-trim>
+&lt;!doctype html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;utf-8&quot;&gt;
+    &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=edge&quot;&gt;
+    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;&gt;
+    &lt;title&gt;My first web page&lt;/title&gt;
+    &lt;link href=&quot;bower_components/bootstrap/dist/css/bootstrap.css&quot; rel=&quot;stylesheet&quot;&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;div class=&quot;container&quot;&gt;
+        &lt;div class=&quot;starter-template&quot;&gt;
+            &lt;h1&gt;This is my first web page&lt;/h1&gt;
+            &lt;table class=&quot;table table-hover&quot;&gt;
+                &lt;thead&gt;
+                    &lt;tr&gt;&lt;td&gt;&lt;strong&gt;Name&lt;/strong&gt;&lt;/td&gt;&lt;td&gt;&lt;strong&gt;Surname&lt;/strong&gt;&lt;/td&gt;&lt;/tr&gt;
+                &lt;/thead&gt;
+                &lt;tbody&gt;
+                    &lt;tr&gt;&lt;td&gt;Óscar&lt;/td&gt;&lt;td&gt;Belmonte&lt;/td&gt;&lt;/tr&gt;
+                &lt;/tbody&gt;
+            &lt;/table&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+            </code></pre>
+        </section>
+
+        <section id="adding_content">
+            <h3>Adding some content</h3>
+        </section>
+
+        <section id="grid_system">
+            <h3>The grid system</h3>
+        </section>
+
+        <section id="summary">
+            <h3>Summary</h3>
+        </section>
+
+    </div>
+</div>
+<script src="../reveal/lib/js/head.min.js"></script>
+<script src="../reveal/js/reveal.js"></script>
+
+<script>
+
+    // Full list of configuration options available at:
+    // https://github.com/hakimel/reveal.js#configuration
+    Reveal.initialize({
+        controls: true,
+        progress: true,
+        history: true,
+        center: false,
+        width: 1366,
+        hight: 768,
+
+        transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+        // Optional reveal.js plugins
+        dependencies: [
+            { src: '../reveal/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+            { src: '../reveal/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+            { src: '../reveal/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+            { src: '../reveal/plugin/highlight/highlight.js', async: true, condition: function() { return !!document.querySelector( 'pre code' ); }, callback: function() { hljs.initHighlightingOnLoad(); } },
+            { src: '../reveal/plugin/zoom-js/zoom.js', async: true },
+            { src: '../reveal/plugin/notes/notes.js', async: true }
+        ]
+    });
+
+</script>
+
+</body>
+</html>
