@@ -51,7 +51,7 @@
         <section class="center">
             <h1>Web Programming</h1>
             <h2>Client Side</h2>
-            <h3>Tools</h3>
+            <h3>Bootstrap</h3>
             <h4>Óscar Belmonte Fernández</h4>
             <h4>Universitat Jaume I</h4>
         </section>
@@ -65,7 +65,7 @@
             <ol>
                 <li><a href="#/what_is_bootstrap">What is <strong>Bootstrap</strong>?</a></li>
                 <li><a href="#/creating_first_bootstrap">Creating our first <strong>Bootstrap</strong> Web page</a>.</li>
-                <li><a href="#/adding_content">Adding some content</a>.</li>
+                <li><a href="#/adding_content">Adding other elements</a>.</li>
                 <li><a href="#/grid_system">The grid system</a>.</li>
                 <li><a href="#/sumary">Summary</a>.</li>
             </ol>
@@ -73,15 +73,20 @@
 
         <section id="what_is_bootstrap">
             <h3>What is Bootstrap?</h3>
-            <img src="../Presentation/img/bootstrap.png" height="100px">
-            <blockquote cite="http://getbootstrap.com/">
-                Bootstrap is the most popular HTML, CSS, and JS framework for developing responsive, mobile first projects on the web.
-            </blockquote>
+            <section>
+                <img src="../Presentation/img/bootstrap.png" height="100px">
+                <blockquote cite="http://getbootstrap.com/">
+                    Bootstrap is the most popular HTML, CSS, and JS framework for developing responsive, mobile first projects on the web.
+                </blockquote>
+                <p><strong>Bootstrap</strong> provides us with a scaffolding for creating our static content.</p>
+            </section>
         </section>
 
         <section id="creating_first_bootstrap">
             <h3>Creating our first Bootstrap Web page</h3>
-            <pre><code class="html" data-trim>
+            <section>
+                <p>Let's create our first static web page:</p>
+                <pre><code class="html" data-trim>
 &lt;!doctype html&gt;
 &lt;html lang=&quot;en&quot;&gt;
 &lt;head&gt;
@@ -107,19 +112,53 @@
     &lt;/div&gt;
 &lt;/body&gt;
 &lt;/html&gt;
-            </code></pre>
+                </code></pre>
+            </section>
+            
+            <section>
+                <p>And this is the result:</p>
+                <img src="img/firstPage.png" height="350px">
+            </section>
+            
+            <section>
+                <p>Let's add Bootstrap style:</p>
+                <pre><code class="html" data-trim>
+    &lt;title&gt;My first web page&lt;/title&gt;
+    &lt;link href=&quot;bower_components/bootstrap/dist/css/bootstrap.css&quot; rel=&quot;stylesheet&quot;&gt;
+&lt;/head&gt;
+                </code></pre>
+            </section>
+            
+            <section>
+                <p>This is the result of applying the Bootstrap style:</p>
+                <img src="img/firstBootstrapPage.png">
+            </section>
         </section>
 
         <section id="adding_content">
-            <h3>Adding some content</h3>
+            <h3>Adding other elements</h3>
+            <section>
+                <p><strong><a href="http://getbootstrap.com/" target="_blank">Bootstarp</a></strong>
+                provides lots of different elements to be added to our web pages</p>
+                <pre><code class="html" data-trim>
+&lt;td&gt;&lt;button type=&quot;button&quot; class=&quot;btn btn-info&quot;&gt;Info&lt;/button&gt;&lt;/td&gt;
+                </code></pre>
+                <img src="img/firstBootstrapPageButtons.png">
+            </section>
         </section>
 
         <section id="grid_system">
             <h3>The grid system</h3>
+            <section>
+
+            </section>
         </section>
 
         <section id="summary">
             <h3>Summary</h3>
+            <section>
+
+            </section>
         </section>
 
     </div>
