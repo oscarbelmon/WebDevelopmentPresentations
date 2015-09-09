@@ -58,7 +58,10 @@
         <section>
             <h3>Introduction</h3>
             <section>
-
+                <p>The Model-View-Controller design pattern is an extensively used pattern when designing applications with a Graphical User Interface (GUI).</p>
+                <p>The principle underneath is to provide each piece of software with an unique and well define purpose.</p>
+                <p><strong>AngularJS</strong> implements this design patter, so we use it to build our GUI making use of such a design patter.</p>
+                <p><strong>AngularJS</strong> heavily uses javascript, so anything you already know about javascript can be used in <strong>AngularJS</strong>.</p>
             </section>
         </section>
 
@@ -196,21 +199,122 @@ angular#1.4.5 bower_components/angular
         <section id="separation_of_concerns">
             <h3>Separation of concerns</h3>
             <section>
+                <p>A general good practice in programming is <strong>Separation of concerns</strong>. The basic idea behind is to segregate responsibilities between modules/actor/components/... and do not mix them in the same module/actor/component.</p>
+                <p>The <strong>MVC</strong> design pattern is a particular case of separation of concerns. Three different concerns are defined:</p>
+                <ul>
+                    <li><strong>Model</strong>: All data and any logic to manipulate it (typically: create, retrieve, update and delete operations). </li>
+                    <li><strong>View</strong>: Anything related with the visualization of the data retreived from the model.</li>
+                    <li><strong>Controller</strong>: This connects interactions with the View into changes in the Model, and changes in the Model as updates to the View.</li>
+                </ul>
+            </section>
 
+            <section>
+                <p>In the case of a Web application:</p>
+                <ul>
+                    <li>Model: the data to be rendered on the browser, typically in <a href="http://json.org/" target="_blank">json</a> format.</li>
+                    <li>View: the web page rendering, defined using <a href="http://www.w3.org/standards/webdesign/htmlcss" target="_blank">HTML</a> and stylized using <a href="http://www.w3.org/standards/webdesign/htmlcss" target="_blank">CSS</a> </li>
+                    <li>Controller: the glue between the Model and the View, written using Javascript.</li>
+                </ul>
             </section>
         </section>
 
         <section id="mvc_angular">
             <h3>MVC with AngularJS</h3>
             <section>
+                <p>Let's <em>Angularize</em> our previous example.</p>
+                <img src="img/firstBootstrapPageButtons.png">
+            </section>
 
+            <section>
+                <p>First, let's say that we want an <strong>AngularJS</strong> application</p>
+                <pre><code lang="html" data-trim>
+                    &lt;html lang=&quot;en&quot; ng-app=&quot;app&quot;&gt;
+                </code></pre>
+                <p>Second let's inject the controller:</p>
+                <pre><code lang="html" data-trim>
+                    &lt;body ng-controller=&quot;MyController as myController&quot;&gt;
+                </code></pre>
+            </section>
+
+            <section>
+                <p>Now let's link data from the controller into our view:</p>
+                <pre><code lang="html" data-trim>
+&lt;div class=&quot;container&quot;&gt;
+    &lt;div class=&quot;starter-template&quot;&gt;
+        &lt;h1&gt;Table populated with AngularJS controller&lt;/h1&gt;
+        &lt;table class=&quot;table table-hover&quot;&gt;
+            &lt;thead&gt;
+                &lt;tr&gt;&lt;td&gt;&lt;strong&gt;Name&lt;/strong&gt;&lt;/td&gt;&lt;td&gt;&lt;strong&gt;Surname&lt;/strong&gt;&lt;/td&gt;&lt;/tr&gt;
+            &lt;/thead&gt;
+            &lt;tbody&gt;
+                &lt;tr ng-repeat=&quot;person in people&quot;&gt;
+                    &lt;td&gt;{{person.name}}&lt;/td&gt;
+                    &lt;td&gt;{{person.surname}}&lt;/td&gt;
+                    &lt;td&gt;&lt;td&gt;&lt;button type='button' class='btn btn-info' data-toggle='modal' data-target='#myModal' ng-click='currentPerson($index)'&gt;Info&lt;/button&gt;&lt;/button&gt;&lt;/td&gt;
+                &lt;/tr&gt;
+            &lt;/tbody&gt;
+        &lt;/table&gt;
+    &lt;/div&gt;
+                </code></pre>
+            </section>
+
+            <section>
+                <p>The javascript controller code:</p>
+                <pre><code lang="html" data-trim>
+angular.module(&quot;app&quot;, [])
+    .controller(&quot;MyController&quot;, function($scope) {
+        $scope.people = [
+            {
+                name:&quot;Oscar&quot;,
+                surname:&quot;Belmonte&quot;
+            },
+            {
+                name:&quot;Mar&iacute;a del Carmen&quot;,
+                surname:&quot;Erdozain&quot;
+            },....
+                </code></pre>
+            </section>
+
+            <section>
+                <p>The modal windonw:</p>
+                <pre><code lang="html" data-trim>
+&lt;div class=&quot;modal fade&quot; id=&quot;myModal&quot; tabindex=&quot;-1&quot; role=&quot;dialog&quot; aria-labelledby=&quot;myModalLabel&quot;&gt;
+    &lt;div class=&quot;modal-dialog&quot; role=&quot;document&quot;&gt;
+        &lt;div class=&quot;modal-content&quot;&gt;
+            &lt;div class=&quot;modal-header&quot;&gt;
+                &lt;button type=&quot;button&quot; class=&quot;close&quot; data-dismiss=&quot;modal&quot; aria-label=&quot;Close&quot;&gt;&lt;span aria-hidden=&quot;true&quot;&gt;&amp;times;&lt;/span&gt;&lt;/button&gt;
+                &lt;h4 class=&quot;modal-title&quot; id=&quot;myModalLabel&quot;&gt;Info&lt;/h4&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;modal-body&quot;&gt;
+                &lt;p&gt;Detailed info about the person goes here.&lt;/p&gt;
+                &lt;p&gt;Name: {{current_person.name}} Surname: {{current_person.surname}}&lt;/p&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;modal-footer&quot;&gt;
+                &lt;button type=&quot;button&quot; class=&quot;btn btn-default&quot; data-dismiss=&quot;modal&quot;&gt;Close&lt;/button&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+                </code></pre>
+            </section>
+
+            <section>
+                <p>The javascript code in the controller to update the current person:</p>
+                <pre><code lang="html" data-trim>
+$scope.currentPerson = function (index) {
+    $scope.current_person = $scope.people[index];
+}
+                </code></pre>
             </section>
         </section>
 
         <section id="summary">
             <h3>Summary</h3>
             <section>
-
+                <p>We have seen a step by step tutorial on how to <em>Angularize</em> our javascript Web applications.</p>
+                <p>The benefit of using <strong>AngularJS</strong> is we can independently build each part of our Web application.</p>
+                <p>We have seen how to build the GUI using <strong>HTML</strong> and how to bind the data to that provided by a <strong>Controller</strong>.</p>
+                <p>In the second part of the course, we will see how to provide the data to our controller by means of a server application.</p>
             </section>
         </section>
 
