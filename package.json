@@ -1,0 +1,19 @@
+{
+  "name": "web_development_presentations",
+  "version": "1.0.0",
+  "description": "Web development subject presentations for the Masters' degree in geospatial technologies",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/oscarbelmon/WebDevelopmentPresentations.git"
+  },
+  "author": "Oscar Belmonte Fernandez",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/oscarbelmon/WebDevelopmentPresentations/issues"
+  },
+  "homepage": "https://github.com/oscarbelmon/WebDevelopmentPresentations#readme"
+}

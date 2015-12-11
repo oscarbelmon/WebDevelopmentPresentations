@@ -1,0 +1,30 @@
+.reveal .slides {
+    text-align: left;
+}
+
+.reveal .center {
+    text-align: center;
+}
+
+.reveal .slides .box {
+    width: 40%;
+    padding: 0px;
+    margin: 0px;
+    float: left;
+}
+
+.reveal .before-quote {
+    float: left;
+    margin-right: 50px;
+}
+
+.reveal h3 {
+    color: #777777;
+    border-bottom: solid;
+    border-color: #777777;
+}
+
+.reveal .center h3 {
+    color: #000000;
+    border-bottom: none;
+}
