@@ -18,7 +18,7 @@
     <link rel="stylesheet" href="../bower_components/reveal-js/css/theme/simple.css" id="theme">
 
     <!-- Code syntax highlighting -->
-    <link rel="stylesheet" href="../bower_components/reveal-highlight-themes/styles/default.css">
+    <link rel="stylesheet" href="../bower_components/reveal-highlight-themes/styles/dark.css">
 
     <!--<link rel="stylesheet" href="../reveal/lib/css/zenburn.css">-->
     <link rel="stylesheet" href="../bower_components/reveal-js/lib/css/zenburn.css">
@@ -48,8 +48,8 @@
     <div class="slides">
         <section class="center">
             <h1>Web Development</h1>
-            <h2>Client Side</h2>
-            <h3>Bootstrap</h3>
+            <h2>Server Side</h2>
+            <h3>NodeJS</h3>
             <h4>Óscar Belmonte Fernández</h4>
             <h4>Universitat Jaume I</h4>
         </section>
@@ -58,6 +58,7 @@
             <h3>Introduction</h3>
             <section>
                 <p>Typically, a Web application consists of two parts: the client part which is downloaded and executed in the browser; and the server part, which provides the data management through Internet.</p>
+                <p>So far, we have seen how to use <strong>javascript</strong> to write the client side of our applications, now I am presenting you how to develop the server side programmed in <strong>javascript</strong> too.</p>
                 <p><strong>Node</strong> is a mature technology to create server side applications written in javascript.</p>
             </section>
         </section>
@@ -73,6 +74,7 @@
                     <li><a href="#/stopping_server">Stopping the server</a>.</li>
                     <li><a href="#/code_detail">The server code in detail</a>.</li>
                     <li><a href="#/summary">Summary</a>.</li>
+                    <li><a href="#/exercises">Exercises.</a></li>
                 </ol>
             </section>
         </section>
@@ -137,16 +139,17 @@ Server running at http://127.0.0.1:3000/
             <h3>The server code in detail</h3>
             <section>
                 <pre><code lang="javascript" data-trim>
-var http = require('http'); // The http module is load.
+var http = require('http'); // The http module is loaded.
 
-http.createServer(function (req, res) { // We create the server. req is the request object. res is the response object
-    res.writeHead(200, {'Content-Type': 'text/plain'}); // This is a header response
-    res.end('Hello World\n'); // This is the response content
-}).listen(3000, &quot;127.0.0.1&quot;); // It starts to listen
+http.createServer(function (req, res) { // We create the server. req is the request object. res is the response object.
+    res.writeHead(200, {'Content-Type': 'text/plain'}); // These are the Status Code (200=OK) and header response.
+    res.end('Hello World\n'); // This is the response content.
+}).listen(3000, &quot;127.0.0.1&quot;); // It starts to listen.
 
 console.log('Server running at http://127.0.0.1:3000/');
                 </code></pre>
-
+                <p class="fragment">Although you can develop your server web application directly using <strong>NodeJS</strong>, there are frameworks that help you in creatring your applications.</p>
+                <p class="fragment"><strong>ExpressJS</strong> is one of such frameworks. It is addressed to easy the development of web applications that adhere the RESTful architectural style. We will see this framework in the next course chapter.</p>
             </section>
         </section>
 
@@ -155,6 +158,17 @@ console.log('Server running at http://127.0.0.1:3000/');
             <section>
                 <p><strong>Node</strong> provide us with the basics to build server application written in javascript.</p>
                 <p><a href="http://nodeschool.io/">Node school</a> is a very useful web site to learn node and other related technologies.</p>
+            </section>
+        </section>
+
+        <section id="exercises">
+            <h3>Exercises</h3>
+            <section>
+                <ol>
+                    <li>Write a server web application which will show your name when someone connects to it.</li>
+                    <li>Change the listening port of the web server application to 3030.</li>
+                    <li>Start two different web server applications in different listening ports.</li>
+                </ol>
             </section>
         </section>
     </div>
