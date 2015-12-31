@@ -58,7 +58,8 @@
         <section>
             <h3>Introduction</h3>
             <section>
-
+                <p>To create the server part of a web application using <strong>NodeJS</strong> is tedious.</p>
+                <p><strong>ExpressJS</strong> easy the creation the server part of our web applications.</p>
             </section>
         </section>
 
@@ -66,10 +67,13 @@
             <h3>Content</h3>
             <section>
                 <ol>
-                    <li>Installing Express using npm.</li>
-                    <li>First web application with Express.</li>
-                    <li>Basic routing.</li>
-                    <li>Serving static files.</li>
+                    <li><a href="#/installing_express">Installing Express using npm</a>.</li>
+                    <li><a href="#/first_web_application">First web application with Express</a>.</li>
+                    <li><a href="#/basic_routing">Basic routing</a>.</li>
+                    <li><a href="#/restfull">RESTfull web services in a nutshell</a>.</li>
+                    <li><a href="#/routing">Routing</a>.</li>
+                    <li><a href="#/serving_static">Serving static files</a>.</li>
+                    <li><a href="#/exercises">Exercises</a>.</li>
                 </ol>
             </section>
         </section>
@@ -77,28 +81,216 @@
         <section id="installing_express">
             <h3>Installing Express using npm</h3>
             <section>
-
+                <p>To <em>install</em>, just open a terminal and write:</p>
+                <pre><code lang="console" data-trim="">
+npm install --save express
+                </code></pre>
+                <p>npm will search for Express and download it in your current folder.</p>
+                <p>You can check for it in the <strong>node_modules</strong> folder.</p>
             </section>
         </section>
 
         <section id="first_web_application">
             <h3>First web application with Express</h3>
             <section>
+                <p>Create a new javascript (firstExpress.js) file and type in the following code:</p>
+                <pre><code lang="javascript" data-trim="">
+var express = require('express');
+var app = express();
+var port = 3000;
 
+app.get('/', function (req, res) {
+    res.send('Hello World!');
+});
+
+var server = app.listen(port, function () {
+    console.log('Server running at http://127.0.0.1:' + port);
+});
+                </code></pre>
+                <p>To start the server, type in a terminal:</p>
+                <pre><code lang="console" data-trim>
+node firstExpress.js
+Server running at http://127.0.0.1:3000
+                </code></pre>
             </section>
         </section>
 
         <section id="basic_routing">
             <h3>Basic routing</h3>
             <section>
+                <p>Let's take a close look into the code. First, we load the <strong>Express</strong> module</p>
+                <pre><code lang="javascript" data-trim="">
+var app = express();
+                </code></pre>
+                <p>Then we describe what to do when a GET to the route "/" is requested.</p>
+                <pre><code lang="javascript" data-trim="">
+app.get('/', function (req, res) {
+    res.send('Hello World!');
+});
+                </code></pre>
+                <p>We send a wellcome string to the client.</p>
+            </section>
+
+            <section>
+                <p>Routing is the mechanism to respond to client's request to a particular URI and by means of a particular HTTP method, also konwn as HTTP verbs.</p>
+                <p>app.METOD(PATH, HANDLER)</p>
+                <pre><code lang="javascript" data-trim="">
+app.get('/', function (req, res) {
+    res.send('Hello World!');
+});
+                </code></pre>
+                <p>In this example we are requesting to the URI <strong>http://localhost:300/</strong> using a <strong>GET</strong> method. The handler is the javascript function which is executed to generate the response.</p>
+            </section>
+        </section>
+
+        <section id="restfull">
+            <h3>RESTfull web services in a Nutshell</h3>
+            <section>
+                <p>The REST architecture is based on four concepts and four properties.</p>
+                <p>Concepts</p>
+                <ol>
+                    <li>Resource: Any piece of information accessible by means of the HTTP protocol. Examples: a web page, a pdf file, an entry in a database table, a picture and so on.</li>
+                    <li>URIs: A string used to identify the name of a resource. Exaple: http://www3.uji.es/~belfern.</li>
+                    <li>Representation: The same resource, an entry in database table, can be represented as plain text, a json file, an xml file, and so on.</li>
+                    <li>Links: Any resource can be linked to any other resources by links.</li>
+                </ol>
+            </section>
+
+            <section>
+                <p>Properties:</p>
+                <ol>
+                    <li>Addressable: Any resource must have one or more URIs pointing to it.</li>
+                    <li>Stateless: Serves do not remember anything between consecutive requests.</li>
+                    <li>Connection: Anything is connected in a web application.</li>
+                    <li>Uniform interface: HTTP methods and, request and response headers.</li>
+                </ol>
+            </section>
+
+            <section>
+                <p>The general, very general, recipe to create a RESTful web application is:</p>
+                <ol>
+                    <li>To determine the resources of your application.</li>
+                    <li>To determine the valid representations for those resources.</li>
+                    <li>To define the URIs to access to those resources.</li>
+                    <li>To determine the valid HTTP methods to access your resources.</li>
+                    <li>To determine the links between different resources.</li>
+                </ol>
+            </section>
+
+            <section>
+                <p>Imagine you are developing a web catalog of products.</p>
+                <ol>
+                    <li>Resources: Each product in the catalog.</li>
+                    <li>Representations: We determine json and xml as valid representations.</li>
+                    <li>URIs and methods in the following table.</li>
+                    <li>Links: Any product has a link pointing to the next product in the catalog.</li>
+                </ol>
+            </section>
+
+            <section>
+                <p>Valid URIs and methods:</p>
+                <table>
+                    <thead>
+                        <tr><th>URI</th><th>Method</th><th>Meaning</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>http://myFancyCatalog.com/</td><td>GET</td><td>Returns all products in the catalog</td></tr>
+                        <tr><td></td><td>POST</td><td>Adds a new product, the id is generated by the server.</td></tr>
+                        <tr><td>http://myFancyCatalog.com/{id}</td><td>GET</td><td>Returns product with code id</td></tr>
+                        <tr><td></td><td>PUT</td><td>Adds/Updates a new product with code id</td></tr>
+                        <tr><td></td><td>DELETE</td><td>Deletes the product with code id</td></tr>
+                    </tbody>
+                </table>
+            </section>
+
+            <section>
+                <p>Valid URIs and methods:</p>
+                <table>
+                    <thead>
+                        <tr><th>URI</th><th>Method</th><th>Meaning</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>http://myFancyCatalog/{category}</td><td>GET</td><td>Returns all products in th category</td></tr>
+                        <tr><td></td><td>POST</td><td>Adds a new product to the category, the id is generated by the server</td></tr>
+                        <tr><td>...</td></tr>
+                    </tbody>
+                </table>
+            </section>
+
+            <section>
+                <p>When to use each method:</p>
+                <table>
+                    <thead>
+                        <tr><th>Method</th><th>Meaning</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>GET</td><td>To retrieve a description of a resource</td></tr>
+                        <tr><td>POST</td><td>To create a new resource in the server</td></tr>
+                        <tr><td>PUT</td><td>To create/update a resource in the server</td></tr>
+                        <tr><td>DELETE</td><td>To remove a resource in the server</td></tr>
+                    </tbody>
+                </table>
+                <p>There are other HTTP methods, but these correspond with the basic CRUD operations: Create, Retrieve, Update and Delete.</p>
+            </section>
+
+            <section>
+                <p>Which is the difference between the POST and PUT methods when adding a new resource?</p>
+                <table>
+                    <thead>
+                        <tr><th>URI</th><th>Method</th><th>Meaning</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>http://myFancyCatalog.com/</td><td>POST</td><td>Adds a new product, the id is generated by the server.</td></tr>
+                        <tr><td>http://myFancyCatalog.com/<strong>{id}</strong></td><td>PUT</td><td>Adds/Updates a new product with code id</td></tr>
+                    </tbody>
+                </table>
+                <p>With <strong>PUT</strong> we provide (decide) the <strong>URI</strong> of the new resource.</p>
+                <p>With <strong>POST</strong> we do not, the server will generate an <strong>id</strong> for us.</p>
+            </section>
+        </section>
+
+
+        <section>
+            <h3>Routing</h3>
+            <section>
+                <p>We use routing to translate our URIs and Methods table to Express code.</p>
+                <table>
+                    <thead>
+                        <tr><th>URI</th><th>Method</th><th>Meaning</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>http://myFancyCatalog.com/</td><td>GET</td><td>Returns all products in the catalog</td></tr>
+                    </tbody>
+                </table>
+                <pre><code lang="javascript" data-trim="">
+app.get("/", function(req,res) {
+    res.json(catalog);
+}
+                </code></pre>
 
             </section>
         </section>
 
+
         <section id="serving_static">
             <h3>Serving static files</h3>
             <section>
+                <p>Express provides an easy way to do that:</p>
+                <pre><code lang="javascript" data-trim="">
+app.use(express.static(__dirname + "/../bower_components"));
+app.use(express.static(__dirname + '/public'));
+                </code></pre>
+                <p>With this, express will serve the files in the /../bower_components and /public folders.</p>
+            </section>
+        </section>
 
+
+        <section>
+            <h3>Exercises</h3>
+            <section>
+                <ol>
+                    <li>Code the Catalog example.</li>
+                </ol>
             </section>
         </section>
 
