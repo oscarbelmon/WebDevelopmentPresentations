@@ -72,6 +72,7 @@
                 <ol>
                     <li><a href="#/installing">Installing and using <strong>MongoDB</strong></a>.</li>
                     <li><a href="#/mongoose">Mongoose</a>.</li>
+                    <li><a href="#/summary">Summary</a>.</li>
                 </ol>
             </section>
         </section>
@@ -269,28 +270,83 @@ app.get("/catalog/:id", function(req, res, next) {
             </section>
 
             <section>
+                <p>Although the function we are using is <strong>Product.findOne(json, function(err, doc))</strong>, this is not a <strong>MongoDB</strong> function but the <em>wrapper</em> function by <strong>Mongoose</strong>.</p>
+                <p>Let's see how to retrieve all products in the database:</p>
+            </section>
 
+            <section>
+                <pre><code lang="javascript" data-trim>
+app.get("/catalog", function(req, res) {
+    var stream = Product.find().stream();
+    var results = {};
+    stream.on('data', function(doc) {
+            results[doc.id] = doc;
+        }).on("error", function(err) {
+            res.status(500);
+            next(err);
+        }).on('close', function() {
+            res.status(200);
+            res.json(results);
+    });
+});
+                </code></pre>
+                <p>Here, we are using <strong>find().stream()</strong> instead of just <strong>find()</strong>.</p>
+                <p><strong>find()</strong> returns a javascript array with al documents matching the query condition.</p>
+                <p>But, we want to return an associative map, so we need some control. We achieve this control by means of a stream.</p>
+            </section>
+
+            <section>
+                <p><strong>Exercise</strong></p>
+                <p>Re-code the REMOVE operation to delete an existing product(resource) in the database using <strong>Mongoose</strong></p>
+                <pre><code lang="javascript" data-trim>
+app.delete("/catalog/:id", function(req, res, next) {
+    ....
+}
+                </code></pre>
+                <p>Try to cover all anomalous results:</p>
+                <ul>
+                    <li>There is no product with a given <strong>id</strong>.</li>
+                    <li><strong>MongoDB</strong> returns an error.</li>
+                </ul>
+            </section>
+
+            <section>
+                <p><strong>Exercise</strong></p>
+                <p>Re-code the CREATE operation to create a new product(resource) in the database using <strong>Mongoose</strong>.</p>
+                <pre><code lang="javascript" data-trim>
+app.post("/catalog", function(req, res, next) {
+    ....
+}
+                </code></pre>
+                <p>Try to cover all anomalous results:</p>
+                <ul>
+                    <li>A product with the same <strong>id</strong> already exists in the database.</li>
+                    <li><strong>MongoDB</strong> returns an error.</li>
+                </ul>
+            </section>
+
+            <section>
+                <p><strong>Exercise</strong></p>
+                <p>Re-code the UPDATE operation to update an existing product(resource) in the database using <strong>Mongoose</strong>.</p>
+                <pre><code lang="javascript" data-trim>
+app.put("/catalog/:id", function(req, res, next) {
+    ....
+}
+                </code></pre>
+                <p>Try to cover all anomalous results:</p>
+                <ul>
+                    <li>The product <strong>id</strong> and the request URI do not match.</li>
+                    <li>There is no product with the provided <strong>id</strong>.</li>
+                    <li><strong>MongoDB</strong> returns an error.</li>
+                </ul>
             </section>
         </section>
 
-        <section>
-            <h3></h3>
+        <section id="summary">
+            <h3>Summary</h3>
             <section>
-
-            </section>
-        </section>
-
-        <section>
-            <h3></h3>
-            <section>
-
-            </section>
-        </section>
-
-        <section>
-            <h3></h3>
-            <section>
-
+                <p>You are now able to code the basic CRUD operation for a web application using a NoSQL database.</p>
+                <p>All data of your web application is now persisted to a database, no piece of information will be lost.</p>
             </section>
         </section>
 
