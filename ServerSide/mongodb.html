@@ -71,21 +71,203 @@
             <section>
                 <ol>
                     <li><a href="#/installing">Installing and using <strong>MongoDB</strong></a>.</li>
-                    <li></li>
+                    <li><a href="#/mongoose">Mongoose</a>.</li>
                 </ol>
             </section>
         </section>
 
         <section id="installing">
-            <h3>Installing <strong>MongoDB</strong></h3>
+            <h3>Installing and using <strong>MongoDB</strong></h3>
             <section>
                 <p>To install <strong>MongoDB</strong> is OS dependent. Take a look at <a href="https://docs.mongodb.org/getting-started/shell/installation/" target="_blank">Install MongoDB</a></p>
                 <p><strong>MongoDB</strong> provides a shell to interact with the MongoDB manager, to lauch it, just type <strong>mongo</strong> in a console.</p>
+                <pre><code lang="console" data-trim>
+$ mongo
+MongoDB shell version: 3.2.0
+connecting to: test
+>
+                </code></pre>
+                <p>By default, when you start the Mongo shell the <strong>test</strong> database is automatically selected. If you want to use another one type:</p>
+                <pre><code lang="javascript" data-trim>
+mongo catalog
+MongoDB shell version: 3.2.0
+connecting to: catalog
+>
+                </code></pre>
+            </section>
+
+            <section>
+                <p>To see the databases in the <strong>MongoDB</strong> manager:</p>
+                <pre><code lang="console" data-trim>
+> show dbs
+catalog  0.000GB
+local    0.000GB
+>
+                </code></pre>
+                <p>To change to a particular database:</p>
+                <pre><code lang="console" data-trim>
+> use catalog
+switched to db catalog
+>
+                </code></pre>
+                <p>To see the collections in a database:</p>
+                <pre><code lang="console" data-trim>
+> show collections
+products
+>
+                </code></pre>
+            </section>
+
+            <section>
+                <p>To find all documents in the collection:</p>
+                <pre><code lang="console" data-trim>
+> db.products.find()
+>
+                </code></pre>
+                <p>We have no products in the collection yet. Let's add the first product:</p>
+                <pre><code lang="console" data-trim>
+> db.products.save({"id":"1", "name":"USB drive", "price":10})
+WriteResult({ "nInserted" : 1 })
+>
+                </code></pre>
+                <p>Let's see how documents are found now:</p>
+                <pre><code lang="console" data-trim>
+> db.products.find()
+{ "_id" : ObjectId("568b64ed3d89d76b0731ec76"), "id" : "1", "name" : "USB drive", "price" : 10 }
+>
+                </code></pre>
+                <p>Note the <strong>_id</strong> attribute, its an internal key for this particular document in the database.</p>
+            </section>
+
+            <section>
+                <p>To update an existing document in the database:</p>
+                <pre><code lang="console" data-trim>
+> db.products.update({"id":"1"}, {$set:{"price":11}})
+WriteResult({ "nMatched" : 1, "nUpserted" : 0, "nModified" : 1 })
+>
+                </code></pre>
+                <p>Check the update using:</p>
+                <pre><code lang="console" data-trim>
+> db.products.find()
+{ "_id" : ObjectId("568b64ed3d89d76b0731ec76"), "id" : "1", "name" : "USB drive", "price" : 11 }
+>
+                </code></pre>
+                <p>Alternatively, you can try to find just one document:</p>
+                <pre><code lang="console" data-trim>
+> db.products.findOne();
+{
+    "_id" : ObjectId("568b70fc3d89d76b0731ec77"),
+    "id" : "1",
+    "name" : "USB drive",
+    "price" : 10
+}
+>
+                </code></pre>
+            </section>
+
+            <section>
+                <p>To remove a particular document from the database:</p>
+                <pre><code lang="console" data-trim>
+> db.products.remove({"id":"1"})
+WriteResult({ "nRemoved" : 1 })
+>
+                </code></pre>
+                <p>Try to find it out again:</p>
+                <pre><code lang="console" data-trim>
+> db.products.find()
+>
+                </code></pre>
+                <p>No documents are reported now.</p>
+            </section>
+
+            <section>
+                <p>The basic CRUD operations in <strong>MongoDB</strong> are:</p>
+                <table>
+                    <thead>
+                        <tr><th>Operation</th><th>MongoDB command</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Create</td><td>db.collection.save()</td></tr>
+                        <tr><td>Retrieve</td><td>db.collection.find()</td></tr>
+                        <tr><td>Update</td><td>db.collection.update()</td></tr>
+                        <tr><td>Delete</td><td>db.collection.remove()</td></tr>
+                    </tbody>
+                </table>
+                <p>You can check a complete introduction in <a href="https://docs.mongodb.org/getting-started/shell/" target="_blank">Getting started with MongoDB</a>.</p>
             </section>
         </section>
 
-        <section>
-            <h3></h3>
+        <section id="mongoose">
+            <h3>Mongoose</h3>
+            <section>
+                <p><strong>Mongoose</strong> is an <em>object modelling</em> framework for <strong>MongoDB</strong>.</p>
+                <p>We define schemas in <strong>Mongoose</strong> that easy to write code.</p>
+                <p>First, let's install it in our application:</p>
+                <pre><code lang="console" data-trim>
+$npm install --save mongoose
+                </code></pre>
+                <p>Now, we need a connection to the <strong>MongoDB</strong> database in <strong>NodeJS</strong>.</p>
+            </section>
+
+            <section>
+                <p>To organize the code of out project, let's create a new folder, name it <strong>model</strong>. Create a file named <strong>db.js</strong> and type the following code in it:</p>
+                <pre><code lang="javascript" data-trim>
+var mongoose = require("mongoose");
+
+mongoose.connect("mongodb://localhost/catalog");
+var db = mongoose.connection;
+db.on("error", console.log.bind(console, "connection error."));
+db.on("open", function () {
+    console.log("Mongodb connected");
+});
+
+module.exports = mongoose;
+                </code></pre>
+                <p>Note the last code line, this means that we are exposing the <strong>mongoose</strong> variable to be used in any other nodejs file.</p>
+            </section>
+
+            <section>
+                <p>Now, let's define the schema for our products. Create a new file, name it as <strong>product.js</strong> and type in it:</p>
+                <pre><code lang="javascript" data-trim>
+var db = require("./db");
+
+var Product = db.model('Product', {
+    id: {type: String, required: true},
+    name: {type: String, require: true},
+    price: {type: Number, require: true}
+});
+
+module.exports = Product;
+                </code></pre>
+                <p>Note the last line of code again, we are exposing the <strong>Product</strong> variable to be used by any other nodejs file.</p>
+            </section>
+
+            <section>
+                <p>Let's use our <strong>MongoDB</strong> connection and schema. First, lets import the <strong>Product</strong> module, at the begining of our <strong>index.js</strong> file type:</p>
+                <pre><code lang="console" data-trim>
+var Product = require("./model/product")
+                </code></pre>
+                <p>Now, the code to find out a product by its <strong>id</strong>:</p>
+                <pre><code lang="javascript" data-trim>
+app.get("/catalog/:id", function(req, res, next) {
+    var idProduct = req.params.id;
+
+    Product.findOne({id: idProduct}, function(err, product) {
+        if(err) {
+            res.status(500);
+            next("Internal server error.");
+        } else if(product == null) {
+            res.status(404); // Not found
+            next("No product with code " + idProduct + " found.");
+        } else {
+            res.status(200);
+            res.json(product);
+        }
+    });
+});
+                </code></pre>
+            </section>
+
             <section>
 
             </section>
