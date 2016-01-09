@@ -110,7 +110,7 @@ $ npm install -g bower
             </section>
 
             <section>
-                <p>We can check if the bower installation is ok by:</p>
+                <p>We can check if the bower installation is ok typing:</p>
                 <pre><code class="dos" data-trim>
 $ bower -v
 1.4.1
@@ -118,12 +118,60 @@ $ bower -v
             </section>
 
             <section>
+                <p>Let's create our first project using Bower (press enter to select the default entry:</p>
+                <pre><code lang="console" data-trim>
+$ mkdir FirstProject
+$ cd FirstProject
+$ bower init
+? name FirstProject
+? description This is my first project using Bower.
+? main file index.html
+? what types of modules does this package expose?
+? keywords bower
+? authors Óscar Belmonte Fernández &lt;oscar.belmonte@uji.es&gt;
+? license MIT
+? homepage
+? set currently installed components as dependencies? Yes
+? add commonly ignored files to ignore list? Yes
+? would you like to mark this package as private which prevents it from being accidentally published to the registry? No
+                </code></pre>
+            </section>
+
+            <section>
+                <p>Finally, you will see a summary of your previous selections:</p>
+                <pre><code lang="javascript" data-trim>
+{
+    name: 'FirstProject',
+    authors: [
+        'Óscar Belmonte Fernández &lt;oscar.belmonte@uji.es&gt;'
+    ],
+    description: 'This is my first project using Bower.',
+    main: 'index.html',
+    moduleType: [],
+    keywords: [
+        'bower'
+    ],
+    license: 'MIT',
+    homepage: '',
+    ignore: [
+        '**/.*',
+        'node_modules',
+        'bower_components',
+        'test',
+        'tests'
+    ]
+}
+
+? Looks good? Yes
+                </code></pre>
+                <p>This is the structure of your project using <strong>Bower</strong>. All this information is stored in a file named <strong>bower.json</strong>.</p>
+            </section>
+
+            <section>
                 <p><img src="../Presentation/img/bootstrap.png" width="100px"></p>
                 <p>Let's install <strong>Bootstrap</strong> using <strong>Bower</strong></p>
                 <pre><code class="dos" data-trim>
-$ mkdir FirstProject
-$ cd FirstProject
-$ bower install bootstrap
+$ bower install --save bootstrap
 bower bootstrap#*               cached git://github.com/twbs/bootstrap.git#3.3.5
 bower bootstrap#*             validate 3.3.5 against git://github.com/twbs/bootstrap.git#*
 bower jquery#>= 1.9.1           cached git://github.com/jquery/jquery.git#2.1.4
@@ -136,6 +184,7 @@ bootstrap#3.3.5 bootstrap
 
 jquery#2.1.4 jquery
                 </code></pre>
+                <p>You can see the new configuration editing the file <strong>bower.json</strong>.</p>
             </section>
         </section>
 
