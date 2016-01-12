@@ -74,9 +74,11 @@
                     <li><a href="#/what_is_bootstrap">What is <strong>Bootstrap</strong>?</a></li>
                     <li><a href="#/creating_project_bower">Creating our first project with <strong>Bower</strong>.</a> </li>
                     <li><a href="#/creating_first_bootstrap">Creating our first <strong>Bootstrap</strong> Web page</a>.</li>
+                    <li><a href="#/refactoring">Refactoring our code</a></li>
                     <li><a href="#/adding_content">Adding other elements</a>.</li>
                     <li><a href="#/grid_system">The grid system</a>.</li>
-                    <li><a href="#/sumary">Summary</a>.</li>
+                    <li><a href="#/summary">Summary</a>.</li>
+                    <li><a href="#/exercises">Exercises</a>.</li>
                 </ol>
             </section>
         </section>
@@ -239,7 +241,7 @@ jquery#2.1.4 jquery
 
             <section>
                 <p>Now, it must look like:</p>
-            <pre><code class="html" data-trim>
+            <pre><code lang="html" data-trim>
 &lt;!doctype html&gt;
 &lt;html lang=&quot;en&quot;&gt;
 &lt;head&gt;
@@ -277,15 +279,138 @@ jquery#2.1.4 jquery
             </section>
         </section>
 
+
+        <section id="refactoring">
+            <h3>Refactoring</h3>
+            <section>
+                <p>A key point in the development process is to refactor your code frequently.</p>
+                <p>Refactor means to re-write your code improving its structure and readability.</p>
+                <p>In this first example, refactor means, first af all <strong>separation of concerns</strong>.</p>
+                <p>At this point, we are mixing the data itself with the way we present it: The content of the table is inside the table. This is ok for static content, but we are learning to develop web applications and they are always dinamic.</p>
+                <p>Let's start with <strong>separation of concerns</strong>.</p>
+            </section>
+
+            <section>
+                <p>First things first, remove all data in the table:</p>
+                <pre><code lang="html" data-trim>
+&lt;table class=&quot;table table-hover&quot;&gt;
+    &lt;thead&gt;
+        &lt;tr&gt;&lt;td&gt;&lt;strong&gt;Name&lt;/strong&gt;&lt;/td&gt;&lt;td&gt;&lt;strong&gt;Surname&lt;/strong&gt;&lt;/td&gt;&lt;/tr&gt;
+    &lt;/thead&gt;
+    &lt;tbody id=&quot;peopleBody&quot;&gt;
+    &lt;/tbody&gt;
+&lt;/table&gt;
+                </code></pre>
+                <p>Note that we have added an <strong>id</strong> to the table body.</p>
+            </section>
+
+            <section>
+                <p>Let's move the data to a javascript array. So, let's create a new file <strong>js/dataSourde.js</strong>, an type in:</p>
+                <pre><code lang="javascript" data-trim>
+var people = [
+    {
+        name:"Oscar",
+        surname:"Belmonte"
+    },
+    {
+        name:"María del Carmen",
+        surname:"Erdozain"
+    },
+    {
+        name:"Martín",
+        surname:"Belmonte"
+    },
+    {
+        name:"Gonzalo",
+        surname:"Belmonte"
+    }
+]
+                </code></pre>
+            </section>
+
+            <section>
+                <p>Now, let's define, in the same javascript file, a function which will include these data in the web page:</p>
+                <pre><code lang="javascript" data-trim>
+var getData = function() {
+    var text = "";
+    for(i = 0; i < people.length; i++) {
+        text += "<tr><td>" + people[i].name + "</td><td>" + people[i].surname + "</td><td><button type='button' class='btn btn-info' data-toggle='modal' data-target='#myModal' onclick='currentIndex(" + i + ")'>Info</button></td></tr>";
+    }
+    document.getElementById("peopleBody").innerHTML = text;
+}
+                </code></pre>
+                <p>Note that we are updating the <strong>HTML</strong> document.</p>
+            </section>
+
+            <section>
+                <p>Re-load and you will see the same web page as before:</p>
+                <img src="img/firstBootstrapPage.png">
+                <p>But now, the data we are presenting its separated from the way we are presenting it. That's very good.</p>
+            </section>
+        </section>
+
+
         <section id="adding_content">
             <h3>Adding other elements</h3>
             <section>
-                <p>Bootstarp provides lots of different elements to be added to our web pages</p>
+                <p>Bootstarp provides lots of different elements to be added to our web pages.</p>
+                <p>To start using them, we must include the following <strong>scripts</strong> in the web page header:</p>
+                <pre><code lang="html" data-trim>
+&lt;script src=&quot;../bower_components/jquery/dist/jquery.js&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;../bower_components/bootstrap/dist/js/bootstrap.js&quot;&gt;&lt;/script&gt;                                  </code></pre>
+                <p>Before our own <strong>javascript</strong> file.</p>
+            </section>
+
+            <section>
+                <p>Let's first start with buttons:</p>
                 <pre><code class="html" data-trim>
 &lt;td&gt;&lt;button type=&quot;button&quot; class=&quot;btn btn-info&quot;&gt;Info&lt;/button&gt;&lt;/td&gt;
                 </code></pre>
                 <img src="img/firstBootstrapPageButtons.png">
-                <p>With some extra effort and a bit of Javascript, we can create appealing web applications.</p>
+            </section>
+
+            <section>
+                <p>The buttons work, but they do nothing useful right now. It would be fancy if we can get the detail for each person by pressing each button.</p>
+                <p>Let's use a <strong>Modal</strong> window, note the <strong>id</strong> name and surname:</p>
+                <pre><code lang="html" data-trim>
+&lt;!-- Modal --&gt;
+&lt;div class=&quot;modal fade&quot; id=&quot;myModal&quot; tabindex=&quot;-1&quot; role=&quot;dialog&quot; aria-labelledby=&quot;myModalLabel&quot;&gt;
+    &lt;div class=&quot;modal-dialog&quot; role=&quot;document&quot;&gt;
+        &lt;div class=&quot;modal-content&quot;&gt;
+            &lt;div class=&quot;modal-header&quot;&gt;
+                &lt;button type=&quot;button&quot; class=&quot;close&quot; data-dismiss=&quot;modal&quot; aria-label=&quot;Close&quot;&gt;&lt;span aria-hidden=&quot;true&quot;&gt;&amp;times;&lt;/span&gt;&lt;/button&gt;
+                &lt;h4 class=&quot;modal-title&quot; id=&quot;myModalLabel&quot;&gt;Info&lt;/h4&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;modal-body&quot;&gt;
+                &lt;p&gt;Detailed info about the person goes here.&lt;/p&gt;
+                &lt;p&gt;Name: &lt;span id=&quot;name&quot;&gt;&lt;/span&gt; Surname: &lt;span id=&quot;surname&quot;&gt;&lt;/span&gt;&lt;/p&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;modal-footer&quot;&gt;
+                &lt;button type=&quot;button&quot; class=&quot;btn btn-default&quot; data-dismiss=&quot;modal&quot;&gt;Close&lt;/button&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+                </code></pre>
+            </section>
+
+            <section>
+                <p>Fine, now, let's link each button with the modal (be careful, this is a long line of code):</p>
+                <pre><code lang="javascript" data-trim>
+text += &quot;&lt;tr&gt;&lt;td&gt;&quot; + people[i].name + &quot;&lt;/td&gt;&lt;td&gt;&quot; + people[i].surname + &quot;&lt;/td&gt;&lt;td&gt;&lt;button type=&#39;button&#39; class=&#39;btn btn-info&#39; data-toggle=&#39;modal&#39; data-target=&#39;#myModal&#39; onclick=&#39;currentIndex(&quot; + i + &quot;)&#39;&gt;Info&lt;/button&gt;&lt;/td&gt;&lt;/tr&gt;&quot;;
+                </code></pre>
+                <p>And finally the <strong>javascript</strong> function that updates the current index for the data:</p>
+                <pre><code lang="javascript" data-trim>
+var currentIndex = function(index) {
+    document.getElementById("name").innerHTML = people[index].name;
+    document.getElementById("surname").innerHTML = people[index].surname;
+}
+                </code></pre>
+            </section>
+
+            <section>
+                <p>Done!!! This is how our web applications looks like:</p>
+                <img src="img/modal.png">
             </section>
         </section>
 
@@ -334,6 +459,16 @@ jquery#2.1.4 jquery
                 <p>It provide us with a full set of components, and commodity css classes to define the layout of our applications.</p>
                 <p>We have only seen a sneak peed of all functionality it provides.</p>
             </section>
+        </section>
+
+
+        <section id="exercises">
+            <h3>Exercises</h3>
+            <ol>
+                <li>Add new fields to the data, the <strong>postal address</strong> and <strong>e-mail</strong> for example, and make this information visible only when click the <strong>Info</strong> button.</li>
+                <li>Change the code in a way that the information will be displayed, for the example in the grid system section, when the mouse cursor will be over a table row.</li>
+                <li>Try new things on your own.</li>
+            </ol>
         </section>
 
     </div>
