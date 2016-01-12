@@ -80,19 +80,20 @@
                     npm makes it easy for JavaScript developers to share and reuse code, and it makes it easy to update the code that you're sharing.
                 </blockquote>
                 <p>See the <a href="https://docs.npmjs.com/getting-started/what-is-npm#what-is-npm">video</a>.</p>
-                <p>npm is currently bundle with <a href="https://nodejs.org/">node</a>.</p>
-                <p>We will talk about node later in the course (Server Side).</p>
+                <p>npm is currently bundle with <strong><a href="https://nodejs.org/">NodeJS</a></strong>.</p>
+                <p>So, first thing, let's install NodeJS.</p>
+                <p>We will talk about NodeJS later in the course (Server Side).</p>
             </section>
 
             <section>
                 <p>We can check that the installation is correct by:</p>
                 <pre><code data-trim class="dos">
 $ node -v
-v0.12.7
-npm -v
-2.11.3
+v4.2.4
+$ npm -v
+2.14.2
                 </code></pre>
-                <p>Wich are the version numbers for <strong>node</strong> and <strong>npm</strong>.</p>
+                <p>Wich are the version numbers for <strong>NodeJS</strong> and <strong>npm</strong>.</p>
             </section>
         </section>
 
@@ -107,13 +108,14 @@ npm -v
                 <pre><code class="dos">
 $ npm install -g bower
                 </code></pre>
+                <p>The option <strong>-g</strong> means that we are installing it globally, so we do not need to re-install it in any new project.</p>
             </section>
 
             <section>
                 <p>We can check if the bower installation is ok typing:</p>
                 <pre><code class="dos" data-trim>
 $ bower -v
-1.4.1
+1.7.2
                 </code></pre>
             </section>
 
@@ -169,7 +171,7 @@ $ bower init
 
             <section>
                 <p><img src="../Presentation/img/bootstrap.png" width="100px"></p>
-                <p>Let's install <strong>Bootstrap</strong> using <strong>Bower</strong></p>
+                <p>As an example, let's install <strong><a href="./bootstrap.html">Bootstrap</a></strong> using <strong>Bower</strong></p>
                 <pre><code class="dos" data-trim>
 $ bower install --save bootstrap
 bower bootstrap#*               cached git://github.com/twbs/bootstrap.git#3.3.5
@@ -195,6 +197,7 @@ jquery#2.1.4 jquery
                 <blockquote cite="https://www.jetbrains.com/webstorm/">
                     WebStorm is a lightweight yet powerful IDE, perfectly equipped for complex client-side development and server-side development with Node.js.
                 </blockquote>
+                <p>You can get a free copy of <strong><a href="https://www.jetbrains.com/webstorm/">WebStorm</a></strong> by using your UJI account.</p>
             </section>
 
             <section>
@@ -205,9 +208,10 @@ jquery#2.1.4 jquery
         <section id="summary">
             <h3>Summary</h3>
             <p>In this lesson we have install some of the basic tools for developing web client applications.</p>
-            <p>We have installed <strong>Bower</strong> which is a package manager.</p>
-            <p>We have installed our first module <strong>Bootstrap</strong> by means of <strong>Bower</strong>.</p>
-            <p>We have also installed <strong>Webstorm</strong> which is an excellent Integrated Development Environment (IDE) for creating Web applications.</p>
+            <p>First, we have installed <strong>Node.js</strong>, and <strong>npm</strong>.</p>
+            <p>Then, we have installed <strong>Bower</strong> by means of <strong>npm</strong>.</p>
+            <p>As an example, we have installed our first module <strong>Bootstrap</strong> by means of <strong>Bower</strong>.</p>
+            <p>Finally, we have also installed <strong>Webstorm</strong> which is an excellent Integrated Development Environment (IDE) for creating Web applications.</p>
         </section>
     </div>
 </div>
