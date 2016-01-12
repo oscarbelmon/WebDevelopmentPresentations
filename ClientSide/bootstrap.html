@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
 
-    <title>Scaffolding static Web content with Bootstrap</title>
+    <title>Scaffolding Web content with Bootstrap</title>
 
     <meta name="description" content="Scaffolding static Web content with Bootstrap">
     <meta name="author" content="Oscar Belmonte Fernandez">
@@ -59,7 +59,7 @@
         <section>
             <h3>Introduction</h3>
             <section>
-                <p>To create the layout of a web page is one of the most time consuming task in web development.</p>
+                <p>To create the layout of a web page is one of the most time consuming tasks in web development.</p>
                 <p>This task is typically done tuning the content by means of css stylesheets and javascript.</p>
                 <p>Bootstrap provides us with lots of pre-defined css classes to create the layout of a web page, and javascript to add some kind of interactivity, among other things.</p>
                 <p>Moreover, it provide us with a full set of components (buttons, modal windows, and so on) to create the Graphical User Interface (GUI) of our web page.</p>
@@ -181,8 +181,65 @@ jquery#2.1.4 jquery
         <section id="creating_first_bootstrap">
             <h3>Creating our first Bootstrap Web page</h3>
             <section>
-                <p>Let's create our first static web page:</p>
+                <p>Let's create our first static web page with standard <strong>HTML</strong>:</p>
                 <pre><code class="html" data-trim>
+&lt;!doctype html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;utf-8&quot;&gt;
+    &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=edge&quot;&gt;
+    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;&gt;
+    &lt;title&gt;My first web page&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h1&gt;This is my first web page&lt;/h1&gt;
+    &lt;table&gt;
+        &lt;thead&gt;
+            &lt;tr&gt;&lt;td&gt;&lt;strong&gt;Name&lt;/strong&gt;&lt;/td&gt;&lt;td&gt;&lt;strong&gt;Surname&lt;/strong&gt;&lt;/td&gt;&lt;/tr&gt;
+        &lt;/thead&gt;
+        &lt;tbody&gt;
+            &lt;tr&gt;&lt;td&gt;Óscar&lt;/td&gt;&lt;td&gt;Belmonte&lt;/td&gt;&lt;/tr&gt;
+            &lt;tr&gt;&lt;td&gt;Mar&#237;a del Carmen&lt;/td&gt;&lt;td&gt;Erdozain&lt;/td&gt;&lt;/tr&gt;
+            &lt;tr&gt;&lt;td&gt;Mart&#237;n&lt;/td&gt;&lt;td&gt;Belmonte&lt;/td&gt;&lt;/tr&gt;
+            &lt;tr&gt;&lt;td&gt;Gonzalo&lt;/td&gt;&lt;td&gt;Belmonte&lt;/td&gt;&lt;/tr&gt;
+        &lt;/tbody&gt;
+    &lt;/table&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+                </code></pre>
+            </section>
+            
+            <section>
+                <p>And this is the result:</p>
+                <img src="img/firstPage.png" height="350px">
+            </section>
+            
+            <section>
+                <p>Let's add Bootstrap style in the title section:</p>
+                <pre><code class="html" data-trim>
+&lt;title&gt;My first web page&lt;/title&gt;
+    ...
+    &lt;link href=&quot;../bootstrap/dist/css/bootstrap.css&quot; rel=&quot;stylesheet&quot;&gt;
+&lt;/head&gt;
+                </code></pre>
+                <p>And some <strong>div</strong> elements around the whole page:</p>
+                <pre><code lang="html" data-trim>
+&lt;body&gt;
+    &lt;div class=&quot;container&quot;&gt;
+        &lt;div class=&quot;starter-template&quot;&gt;
+            &lt;h1&gt;This is my first web page&lt;/h1&gt;
+            &lt;table class=&quot;table table-hover&quot;&gt;
+                    ...
+            &lt;/table&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/body&gt;
+                </code></pre>
+            </section>
+
+            <section>
+                <p>Now, it must look like:</p>
+            <pre><code class="html" data-trim>
 &lt;!doctype html&gt;
 &lt;html lang=&quot;en&quot;&gt;
 &lt;head&gt;
@@ -202,6 +259,9 @@ jquery#2.1.4 jquery
                 &lt;/thead&gt;
                 &lt;tbody&gt;
                     &lt;tr&gt;&lt;td&gt;Óscar&lt;/td&gt;&lt;td&gt;Belmonte&lt;/td&gt;&lt;/tr&gt;
+                    &lt;tr&gt;&lt;td&gt;Mar&#237;a del Carmen&lt;/td&gt;&lt;td&gt;Erdozain&lt;/td&gt;&lt;/tr&gt;
+                    &lt;tr&gt;&lt;td&gt;Mart&#237;n&lt;/td&gt;&lt;td&gt;Belmonte&lt;/td&gt;&lt;/tr&gt;
+                    &lt;tr&gt;&lt;td&gt;Gonzalo&lt;/td&gt;&lt;td&gt;Belmonte&lt;/td&gt;&lt;/tr&gt;
                 &lt;/tbody&gt;
             &lt;/table&gt;
         &lt;/div&gt;
@@ -210,23 +270,9 @@ jquery#2.1.4 jquery
 &lt;/html&gt;
                 </code></pre>
             </section>
-            
+
             <section>
-                <p>And this is the result:</p>
-                <img src="img/firstPage.png" height="350px">
-            </section>
-            
-            <section>
-                <p>Let's add Bootstrap style:</p>
-                <pre><code class="html" data-trim>
-    &lt;title&gt;My first web page&lt;/title&gt;
-    &lt;link href=&quot;bootstrap/dist/css/bootstrap.css&quot; rel=&quot;stylesheet&quot;&gt;
-&lt;/head&gt;
-                </code></pre>
-            </section>
-            
-            <section>
-                <p>This is the result of applying the Bootstrap style:</p>
+                <p>Finally, This is the result of applying the Bootstrap style:</p>
                 <img src="img/firstBootstrapPage.png">
             </section>
         </section>
