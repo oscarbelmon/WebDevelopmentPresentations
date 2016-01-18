@@ -334,7 +334,7 @@ var people = [
 var getData = function() {
     var text = "";
     for(i = 0; i < people.length; i++) {
-        text += "<tr><td>" + people[i].name + "</td><td>" + people[i].surname + "</td><td><button type='button' class='btn btn-info' data-toggle='modal' data-target='#myModal' onclick='currentIndex(" + i + ")'>Info</button></td></tr>";
+        text += &quot;&lt;tr&gt;&lt;td&gt;&quot; + people[i].name + &quot;&lt;/td&gt;&lt;td&gt;&quot; + people[i].surname + &quot;&lt;/td&gt;&lt;td&gt;&lt;/td&gt;&lt;/tr&gt;&quot;;
     }
     document.getElementById("peopleBody").innerHTML = text;
 }
