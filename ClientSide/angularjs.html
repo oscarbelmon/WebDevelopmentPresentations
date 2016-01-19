@@ -75,6 +75,7 @@
                     <li><a href="#/separation_of_concerns">Separation of concerns</a>.</li>
                     <li><a href="#/mvc_angular">MVC with <strong>AngularJS</strong></a>.</li>
                     <li><a href="#/summary">Summary</a>.</li>
+                    <li><a href="#/exercises">Exercises</a>.</li>
                 </ol>
             </section>
         </section>
@@ -115,7 +116,7 @@ angular#1.4.5 angular
             <h3>Data binding</h3>
             <section>
                 <p>As a first example on AngularJS power lets see how data binding works.</p>
-                <pre><code lang="html">
+                <pre><code lang="html" data-trim>
 &lt;!DOCTYPE html&gt;
 &lt;html lang=&quot;en&quot; ng-app&gt;
 &lt;head&gt;
@@ -123,6 +124,8 @@ angular#1.4.5 angular
         &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=edge&quot;&gt;
         &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;&gt;
         &lt;title&gt;My first AngularJS&lt;/title&gt;
+        &lt;script src=&quot;../bower_components/jquery/dist/jquery.min.js&quot;&gt;&lt;/script&gt;
+        &lt;script src=&quot;../bower_components/angular/angular.min.js&quot;&gt;&lt;/script&gt;
     &lt;/head&gt;
     &lt;body&gt;
     &lt;div&gt;
@@ -131,11 +134,17 @@ angular#1.4.5 angular
         &lt;hr&gt;
         &lt;h1&gt;Hello {{yourName}}!&lt;/h1&gt;
     &lt;/div&gt;
-    &lt;script src=&quot;../../jquery/dist/jquery.min.js&quot;&gt;&lt;/script&gt;
-    &lt;script src=&quot;../../angular/angular.min.js&quot;&gt;&lt;/script&gt;
 &lt;/body&gt;
 &lt;/html&gt;
                 </code></pre>
+            </section>
+            
+            <section>
+                <p>This is the final result:</p>
+                <p class="center">
+                    <img src="img/angularHello.png">
+                </p>
+                <p>Anytime you type something in the text input, the text is automatically updated.</p>
             </section>
 
             <section>
@@ -157,8 +166,8 @@ angular#1.4.5 angular
             <section>
                 <p>Finally:</p>
                 <pre><code lang="html" data-trim>
-&lt;script src=&quot;../../jquery/dist/jquery.min.js&quot;&gt;&lt;/script&gt;
-&lt;script src=&quot;../../angular/angular.min.js&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;../bower_components/jquery/dist/jquery.min.js&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;../bower_components/angular/angular.min.js&quot;&gt;&lt;/script&gt;
                 </code></pre>
                 <p>We are including both: <a href="http://jquery.com/" target="_blank"><strong>jQuery</strong></a> and <strong>AngularJS</strong> itself.</p>
             </section>
@@ -181,17 +190,30 @@ angular#1.4.5 angular
     &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=edge&quot;&gt;
     &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;&gt;
     &lt;title&gt;Adding two numbers in AngularJS&lt;/title&gt;
+    &lt;script src=&quot;../bower_components/jquery/dist/jquery.min.js&quot;&gt;&lt;/script&gt;
+    &lt;script src=&quot;../bower_components/angular/angular.min.js&quot;&gt;&lt;/script&gt;
 &lt;/head&gt;
 &lt;body&gt;
 &lt;div&gt;
     &lt;label&gt;The result of:&lt;/label&gt;
     &lt;input type=&quot;text&quot; ng-model=&quot;one&quot; ng-init=&quot;one = 0&quot;&gt; + &lt;input type=&quot;text&quot; ng-model=&quot;the_other&quot; ng-init=&quot;the_other = 0&quot;&gt; is {{one*1 + the_other*1}}
 &lt;/div&gt;
-&lt;script src=&quot;../../jquery/dist/jquery.min.js&quot;&gt;&lt;/script&gt;
-&lt;script src=&quot;../../angular/angular.min.js&quot;&gt;&lt;/script&gt;
 &lt;/body&gt;
 &lt;/html&gt;
                 </code></pre>
+            </section>
+
+            <section>
+                <p>This is the result:</p>
+                <p class="center">
+                    <img src="img/angularAdding.png">
+                </p>
+                <p>Things to note:</p>
+                <ul>
+                    <li>You can have more that one data-model in your code.</li>
+                    <li>The text inputs have an initial value of 0.</li>
+                    <li>You can embed arithmetic inside curly braces.</li>
+                </ul>
             </section>
         </section>
 
@@ -275,7 +297,7 @@ angular.module(&quot;app&quot;, [])
             </section>
 
             <section>
-                <p>The modal windonw:</p>
+                <p>The modal window:</p>
                 <pre><code lang="html" data-trim>
 &lt;div class=&quot;modal fade&quot; id=&quot;myModal&quot; tabindex=&quot;-1&quot; role=&quot;dialog&quot; aria-labelledby=&quot;myModalLabel&quot;&gt;
     &lt;div class=&quot;modal-dialog&quot; role=&quot;document&quot;&gt;
@@ -304,6 +326,7 @@ $scope.currentPerson = function (index) {
     $scope.current_person = $scope.people[index];
 }
                 </code></pre>
+                <p>Note the <strong>$scope</strong> variable. This means global scope, anything you put in the <strong>$scope</strong> variable will be accessible from your html code.</p>
             </section>
         </section>
 
@@ -314,6 +337,17 @@ $scope.currentPerson = function (index) {
                 <p>The benefit of using <strong>AngularJS</strong> is we can independently build each part of our Web application.</p>
                 <p>We have seen how to build the GUI using <strong>HTML</strong> and how to bind the data to that provided by a <strong>Controller</strong>.</p>
                 <p>In the second part of the course, we will see how to provide the data to our controller by means of a server application.</p>
+            </section>
+        </section>
+
+
+        <section id="exercises">
+            <h3>Exercises</h3>
+            <section>
+                <ol>
+                    <li>Code an angular application that shows the content of an input text reversed. Tip: use the <strong>ng-change</strong> directive in the <strong>input</strong> element to be notified anytime its content changes.</li>
+                    <li>Extend the adding example to include other arithmetic operations.</li>
+                </ol>
             </section>
         </section>
 
