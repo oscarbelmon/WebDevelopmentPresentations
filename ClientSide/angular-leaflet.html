@@ -102,11 +102,10 @@
                         <li>angular-leaflet-directive</li>
                     </ol>
                 </ol>
-                <p>Remember, just type:</p>
+                <p>Remember, just type the following to install a module in your project:</p>
                 <pre><code lang="console" data-trim>
 bower install --save bootstrap
                 </code></pre>
-                <p>to install a module in our project.</p>
             </section>
 
             <section>
@@ -123,14 +122,14 @@ bower install --save bootstrap
     &lt;script src=&quot;./bower_components/angular/angular.js&quot;&gt;&lt;/script&gt;
     &lt;script src=&quot;./bower_components/leaflet/dist/leaflet.js&quot;&gt;&lt;/script&gt;
     &lt;script src=&quot;./bower_components/angular-leaflet-directive/dist/angular-leaflet-directive.js&quot;&gt;&lt;/script&gt;
+    &lt;script src=&quot;./js/myScripts.js&quot;&gt;&lt;/script&gt;
     &lt;title&gt;My first AngularJS and Leaflet map&lt;/title&gt;
 &lt;/head&gt;
 &lt;body ng-controller=&quot;TheController&quot;&gt;
     &lt;div class=&quot;container&quot;&gt;
         &lt;h1&gt;My first Angular and Leaftlet map&lt;/h1&gt;
-        &lt;leaflet id=&quot;firstMap&quot; lf-center=&quot;center&quot; height=&quot;480px&quot; width=&quot;100%&quot;&gt;&lt;/leaflet&gt;
+        &lt;leaflet height=&quot;480px&quot; width=&quot;100%&quot;&gt;&lt;/leaflet&gt;
     &lt;/div&gt;
-    &lt;script src=&quot;./js/myScripts.js&quot;&gt;&lt;/script&gt;
 &lt;/body&gt;
 &lt;/html&gt;
                 </code></pre>
@@ -149,9 +148,14 @@ app.controller("TheController", ["$scope", function($scope) {
             </section>
 
             <section>
+                <p>This is the result, a fully functional leaflet map:</p>
+                <p class="center"><img src="img/leafletWorldMap.png" style="width: 1000px"></p>
+            </section>
+
+            <section>
                 <p>If you want to render a map centered at some point, change the following line in the html file :</p>
                 <pre><code lang="html" data-trim>
-                    &lt;leaflet id=&quot;firstMap&quot; center=&quot;castellon&quot; lf-center=&quot;center&quot; height=&quot;480px&quot; width=&quot;100%&quot;&gt;&lt;/leaflet&gt;
+                    &lt;leaflet lf-center=&quot;castellon&quot; height=&quot;480px&quot; width=&quot;100%&quot;&gt;&lt;/leaflet&gt;
                 </code></pre>
                 <p>And write this code inside the <strong>controller</strong> function:</p>
                 <pre><code lang="javascript" data-trim>
@@ -166,21 +170,97 @@ app.controller("TheController", ["$scope", function($scope) {
 }]);
                 </code></pre>
             </section>
-        </section>
 
-        <section>
-            <h3>Summary</h3>
             <section>
-
+                <p>This is the result, a map centered in Castellon city:</p>
+                <p class="center"><img src="img/leafletCastellon.png" style="width: 1000px;"></p>
             </section>
         </section>
+
 
         <section id="geotodo">
             <h3>The GeoTODO project</h3>
             <section>
-
+                <p>Let's sum app all technologies we have seen to build a something fancy.</p>
+                <p>First, let's see how to add a marker to our map. Add a new attribute <strong>makers</strong> to the <strong>leaflet</strong> element.</p>
+                <pre><code lang="html" data-trim>
+&lt;leaflet lf-center=&quot;castellon&quot; markers=&quot;markers&quot; height=&quot;480px&quot; width=&quot;100%&quot;&gt;&lt;/leaflet&gt;
+                </code></pre>
+                <p>This attribute will contain the markers in our map.</p>
             </section>
+
+            <section>
+                <p>Now, lets add this code to our javascript file</p>
+                <pre><code lang="javascript" data-trim>
+$scope.markers = new Array();
+
+$scope.$on("leafletDirectiveMap.click", function (event,args) {
+    var latlng = args.leafletEvent.latlng;
+
+    $scope.markers = [{
+        lat: latlng.lat,
+        lng: latlng.lng,
+        message: "Hello"
+    }]
+});
+                </code></pre>
+                <ol>
+                    <li>We are listening to <strong>leafletDirectiveMap.click</strong> events.</li>
+                    <li>We define a <strong>function</strong> as listener.</li>
+                    <li>This function receives to parameters, the event and information about the event.</li>
+                    <li>For this event the information is the coordinates (lat, lng).</li>
+                </ol>
+            </section>
+
+            <section>
+                <p>This is the result:</p>
+                <p class="center"><img src="img/leafletMark.png" style="width: 1000px"></p>
+            </section>
+
+            <section>
+                <p>Let's extend our application to maintain multiple markers. Chage the javascript code to:</p>
+                <pre><code lang="javascript" data-trim>
+$scope.$on("leafletDirectiveMap.click", function (event,args) {
+    var latlng = args.leafletEvent.latlng;
+
+    $scope.markers.push({
+        lat: latlng.lat,
+        lng: latlng.lng,
+        message: "Hello"
+    });
+});
+                </code></pre>
+                <p>Now, we are pushing any new marker into the array.</p>
+            </section>
+
+            <section>
+                <p>This is the result:</p>
+                <p class="center"><img src="img/leafletMarkers.png" style="width: 1000px"></p>
+            </section>
+
+            <section>
+                <p>If you need more control about the mouse button pressed:</p>
+                <pre><code lang="javascript" data-trim>
+$scope.$on("leafletDirectiveMap.mousedown", function (event,args) {
+    var mouseButton = args.leafletEvent.originalEvent.button;
+
+    if(mouseButton == 2) { // Right button
+        var latlng = args.leafletEvent.latlng;
+
+        $scope.markers.push({
+            lat: latlng.lat,
+            lng: latlng.lng,
+            message: "Hello"
+        });
+    }
+});
+                </code></pre>
+                <p>Now, left button performs the usual actions, and we use the right button to add a new marker to the map.</p>
+            </section>
+
+
         </section>
+
 
         <section id="summary">
             <h3>Summary</h3>
