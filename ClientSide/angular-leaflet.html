@@ -258,6 +258,225 @@ $scope.$on("leafletDirectiveMap.mousedown", function (event,args) {
                 <p>Now, left button performs the usual actions, and we use the right button to add a new marker to the map.</p>
             </section>
 
+            <section>
+                <p>It would be nice if we could see a list of our todo items, let's add a table under the map:</p>
+                <pre><code class="html" data-trim>
+&lt;div class=&quot;container&quot;&gt;
+    &lt;div class=&quot;row&quot;&gt;
+        &lt;div class=&quot;col-md-12&quot;&gt;
+            &lt;h2&gt;TODO list&lt;/h2&gt;
+            &lt;table class=&quot;table&quot;&gt;
+                &lt;thead&gt;
+                    &lt;tr&gt;&lt;th&gt;Message&lt;/th&gt;&lt;&lt;/tr&gt;
+                &lt;/thead&gt;
+                &lt;tbody&gt;
+                    &lt;tr&gt;
+                        &lt;td&gt;&lt;/td&gt;
+                    &lt;/tr&gt;
+                &lt;/tbody&gt;
+            &lt;/table&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+                </code></pre>
+            </section>
+
+            <section>
+                <p>Let's link the presentation with the data in our model using the controller:</p>
+                <pre><code class="html" data-trim>
+&lt;body ng-controller=&quot;TheController as theController&quot;&gt;
+                </code></pre>
+                <p>For each row in the table, we show its message field:</p>
+                <pre><code class="html" data-trim="">
+&lt;table class=&quot;table&quot;&gt;
+    &lt;thead&gt;
+        &lt;tr&gt;&lt;th&gt;Message&lt;/th&gt;&lt;/tr&gt;
+    &lt;/thead&gt;
+    &lt;tbody&gt;
+        &lt;tr ng-repeat=&quot;marker in markers&quot;&gt;
+            &lt;td&gt;{{marker.message}}&lt;/td&gt;
+        &lt;/tr&gt;
+    &lt;/tbody&gt;
+&lt;/table&gt;
+                </code></pre>
+                <p>The <strong>ng-repeat</strong> AngularJS directive, iterates over the elements of an array.</p>
+            </section>
+
+            <section>
+                <p>This is the result:</p>
+                <p class="center"><img src="img/leafletTable.png" style="width: 800px"></p>
+            </section>
+
+            <section>
+                <p>Let's add a modal window to change the message for each todo item. First, let's add a new Info button for each todo item</p>
+                <pre><code lang="html" data-trim>
+&lt;table class=&quot;table&quot;&gt;
+    &lt;thead&gt;
+        &lt;tr&gt;&lt;th&gt;Message&lt;/th&gt;&lt;th&gt;&lt;/th&gt;&lt;/tr&gt;
+    &lt;/thead&gt;
+    &lt;tbody&gt;
+        &lt;tr ng-repeat=&quot;marker in markers&quot;&gt;
+            &lt;td&gt;{{marker.message}}&lt;/td&gt;
+            &lt;td&gt;&lt;button class=&quot;btn btn-info&quot; ng-click=&quot;showInfo($index)&quot; data-toggle=&quot;modal&quot; data-target=&quot;#myModal&quot;&gt;Info&lt;/button&gt; &lt;/td&gt;
+        &lt;/tr&gt;
+    &lt;/tbody&gt;
+&lt;/table&gt;
+                </code></pre>
+            </section>
+
+            <section>
+                <p>And the code for the modal window:</p>
+                <pre><code lang="html" data-trim>
+&lt;div class=&quot;modal fade&quot; id=&quot;myModal&quot; tabindex=&quot;-1&quot; role=&quot;dialog&quot; aria-labelledby=&quot;myModalLabel&quot;&gt;
+    &lt;div class=&quot;modal-dialog&quot; role=&quot;document&quot;&gt;
+        &lt;div class=&quot;modal-content&quot;&gt;
+            &lt;div class=&quot;modal-header&quot;&gt;
+                &lt;button type=&quot;button&quot; class=&quot;close&quot; data-dismiss=&quot;modal&quot; aria-label=&quot;Close&quot;&gt;&lt;span aria-hidden=&quot;true&quot;&gt;&amp;times;&lt;/span&gt;&lt;/button&gt;
+                &lt;h4 class=&quot;modal-title&quot; id=&quot;myModalLabel&quot;&gt;Info&lt;/h4&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;modal-body&quot;&gt;
+                &lt;p&gt;Change the item here:&lt;/p&gt;
+                &lt;p&gt;Message: &lt;/p&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;modal-footer&quot;&gt;
+                &lt;button type=&quot;button&quot; class=&quot;btn btn-default&quot; data-dismiss=&quot;modal&quot;&gt;Close&lt;/button&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+                </code></pre>
+            </section>
+
+            <section>
+                <p>This is the result:</p>
+                <p class="center"><img src="img/leafletModal.png" width="1000px"></p>
+            </section>
+
+            <section>
+                <p>The next step is to link the wiew with the data in the model by means of the controller. We need to know which button was pressed:</p>
+                <pre><code lang="html" data-trim>
+&lt;td&gt;&lt;button class=&quot;btn btn-info&quot; ng-click=&quot;showInfo($index)&quot; data-toggle=&quot;modal&quot; data-target=&quot;#myModal&quot;&gt;Info&lt;/button&gt; &lt;/td&gt;
+                </code></pre>
+                <p>And in the javascript file:</p>
+                <pre><code lang="javascript" data-trim>
+$scope.currentMarker = {};
+
+$scope.showInfo = function(index) {
+    $scope.currentMarker = $scope.markers[index];
+}
+                </code></pre>
+                <p>We are storing in the <strong>$scope.currentMarker</strong> model, the item selected in the list. Anytime we press a button, this model is updated.</p>
+            </section>
+
+            <section>
+                <p>Finally, let's update the body of the modal window:</p>
+                <pre><code lang="html" data-trim>
+&lt;div class=&quot;modal-body&quot;&gt;
+    &lt;p&gt;Change the item here:&lt;/p&gt;
+    &lt;p&gt;Message&lt;input type=&quot;text&quot; ng-model=&quot;currentMarker.message&quot;&gt;&lt;/p&gt;
+&lt;/div&gt;
+                </code></pre>
+                <p class="center"><img src="img/leafletModal2.png" width="450px"></p>
+            </section>
+
+            <section>
+                <p>Let's add a new  column for the due data of each item:</p>
+                <pre><code lang="html" data-trim>
+&lt;table class=&quot;table&quot;&gt;
+    &lt;thead&gt;
+        &lt;tr&gt;&lt;th&gt;Message&lt;/th&gt;&lt;th&gt;Due date&lt;/th&gt;&lt;th&gt;&lt;/th&gt;&lt;/tr&gt;
+    &lt;/thead&gt;
+    &lt;tbody&gt;
+        &lt;tr ng-repeat=&quot;marker in markers&quot;&gt;
+            &lt;td&gt;{{marker.message}}&lt;/td&gt;
+            &lt;td&gt;{{marker.dueDate | date: &quot;dd/MM/yyyy (hh:mm)&quot;}}&lt;/td&gt;
+            &lt;td&gt;&lt;button class=&quot;btn btn-info&quot; ng-click=&quot;showInfo($index)&quot; data-toggle=&quot;modal&quot; data-target=&quot;#myModal&quot;&gt;Info&lt;/button&gt; &lt;/td&gt;
+        &lt;/tr&gt;
+    &lt;/tbody&gt;
+&lt;/table&gt;
+                </code></pre>
+                <p>Note:</p>
+                <ol>
+                    <li>The filter <strong> | date: "dd/MM/yyyy (hh:mm)</strong> to format the date.</li>
+                    <li>We have added a new column.</li>
+                </ol>
+            </section>
+
+            <section>
+                <p>Next, add a new field to our javascript objects:</p>
+                <pre><code lang="javascript" data-trim>
+$scope.markers.push({
+    lat: latlng.lat,
+    lng: latlng.lng,
+    message: "Hello",
+    dueDate: new Date()
+});
+                </code></pre>
+                <p>Finally, link with the modal window:</p>
+                <pre><code lang="html" data-trim>
+&lt;p&gt;&lt;input type=&quot;datetime-local&quot; ng-model=&quot;currentMarker.dueDate&quot;&gt;&lt;/p&gt;
+                </code></pre>
+                <p>Note: type=&quot;datetime-local&quot; only works with Google Chrome.</p>
+            </section>
+
+            <section>
+                <p>This is the result:</p>
+                <p class="center"><img src="img/leafletDate.png" width="600px"></p>
+            </section>
+
+            <section>
+                <p>Let's try something new. I would be fancy if we can get the postal address of each location.</p>
+                <p>The <a href="http://nominatim.openstreetmap.org/" target="_blank">Nominatim OpenStreetMap</a> provides a free service for reverse geocoding: it returns the postal address given its coordinates.</p>
+                <p>How do we request a service using the http protocol in <strong>AngularJS</strong>?</p>
+                <p><strong>AngularJS</strong> can inject a new  reference for doing that <strong>$http</strong>.</p>
+                <pre><code lang="javascript" data-trim>
+app.controller("TheController", [ "$scope", "$http", function($scope, $http) {
+                </code></pre>
+            </section>
+
+            <section>
+                <p>Let's re-write our code:</p>
+                <pre><code lang="javascript" data-trim>
+$scope.$on("leafletDirectiveMap.mousedown", function (event,args) {
+    var mouseButton = args.leafletEvent.originalEvent.button;
+    if(mouseButton == 2) { // Right button
+        latlng = args.leafletEvent.latlng;
+        reverseGeocoding(latlng);
+    }
+});
+
+function reverseGeocoding(latlng) {
+    var urlString = "http://nominatim.openstreetmap.org/reverse?format=json&lat=" +
+    latlng.lat + "&lon=" +
+    latlng.lng + "&zoom=18&addressdetails=1";
+    $http.get(urlString).then(addMarker);
+}
+
+function addMarker(response) {
+    $scope.markers.push({
+        lat: latlng.lat,
+        lng: latlng.lng,
+        message: "Hello",
+        dueDate: new Date()
+    });
+}
+                </code></pre>
+                <p>The <strong>reverseGeocoding(latlng)</strong> function is the key point.</p>
+            </section>
+
+            <section>
+                <p>Finally, let's update the modal window:</p>
+                <pre><code lang="html" data-trim>
+&lt;div class=&quot;modal-body&quot;&gt;
+    &lt;p&gt;Change the item here:&lt;/p&gt;
+    &lt;p&gt;Message&lt;input type=&quot;text&quot; ng-model=&quot;currentMarker.message&quot;&gt;&lt;/p&gt;
+    &lt;p&gt;&lt;input type=&quot;datetime-local&quot; ng-model=&quot;currentMarker.dueDate&quot;&gt;&lt;/p&gt;
+    &lt;p&gt;Adrres: {{currentMarker.postalAddress}}&lt;/p&gt;
+&lt;/div&gt;
+                </code></pre>
+                <p class="center"><img src="img/leafletPostalAddress.png" width="400px"></p>
+            </section>
+
 
         </section>
 
@@ -267,6 +486,18 @@ $scope.$on("leafletDirectiveMap.mousedown", function (event,args) {
             <section>
                 <p>In this chapter you have seen how to use <strong>Leaflet</strong> using <strong>AngullarJS</strong> by means for <strong>angular-leaflet-directive</strong>.</p>
                 <p>Now, you can <em>control</em> your maps and its content using <strong>AngularJS</strong>.</p>
+            </section>
+        </section>
+
+
+        <section id="exercises">
+            <h3>Exercises</h3>
+            <section>
+                <ol>
+                    <li>Add a new remove button to any item in the Geo-TODO application.</li>
+                    <li>Add a show button like in the image.</li>
+                </ol>
+                <p class="center"><img src="img/leafletShow.png" width="500px"></p>
             </section>
         </section>
 
