@@ -91,8 +91,66 @@
         <section id="creating_first_node_server">
             <h3>Creating our first Node server</h3>
             <section>
-                <section>
-                    <p>Create a <em>firstNode.js</em> file with the following code:</p>
+                    <p>First, let's create a new <strong>NodeJS</strong> project using <strong>npm</strong>.</p>
+                    <p>Open a terminal and type</p>
+                    <pre><code lang="console" data-trim>
+npm init
+This utility will walk you through creating a package.json file.
+It only covers the most common items, and tries to guess sensible defaults.
+
+See `npm help json` for definitive documentation on these fields
+and exactly what they do.
+
+Use `npm install &lt;pkg&gt; --save` afterwards to install a package and
+save it as a dependency in the package.json file.
+
+Press ^C at any time to quit.
+name: (Remove)
+                    </code></pre>
+            </section>
+
+            <section>
+                <p>Type in the name of your new project using lowercase.</p>
+                <pre><code lang="console" data-trim="">
+name: (Remove) remove
+version: (1.0.0)
+description:
+entry point: (index.js)
+test command:
+git repository:
+keywords:
+author:
+license: (ISC)
+                </code></pre>
+            </section>
+
+            <section>
+                <p>Finally, you will see a summary of the new project:</p>
+                <pre><code lang="console" data-trim>
+About to write to /home/oscar/Oscar/Tmp/Remove/package.json:
+
+{
+    "name": "remove",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "author": "",
+    "license": "ISC"
+}
+Is this ok? (yes)
+                </code></pre>
+            </section>
+
+            <section>
+                <p>You can check that a new file <strong>package.json</strong> has been created.</p>
+                <p>This file constains a description on how to build up your project, more about it in the next chapter.</p>
+            </section>
+
+            <section>
+                    <p>Create a <strong>index.js</strong> file with the following code:</p>
                 <pre><code lang="javascript" data-trim>
 var http = require('http');
 
@@ -103,7 +161,6 @@ http.createServer(function (req, res) {
 
 console.log('Server running at http://127.0.0.1:3000/');
                 </code></pre>
-                </section>
             </section>
         </section>
 
@@ -112,7 +169,7 @@ console.log('Server running at http://127.0.0.1:3000/');
             <section>
                 <p>Just type the following in a terminal:</p>
                 <pre><code lang="console" data-trim>
-$ node firstNode.js
+$ node index.js
 Server running at http://127.0.0.1:3000/
                 </code></pre>
                 <p>A message in the screen tells us that the server is running.</p>
