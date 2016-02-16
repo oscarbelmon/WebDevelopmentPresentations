@@ -59,8 +59,8 @@
             <h3>Introduction</h3>
             <section>
                 <p>To create the server part of a web application using <strong>NodeJS</strong> is tedious.</p>
-                <p><strong>ExpressJS</strong> easy the creation the server part of our web applications.</p>
-                <p>We are applying the RESRful architectural style to create the server part of our applications, so need to know the basic principles of this architecture.</p>
+                <p><strong>ExpressJS</strong> easy the creation of the server part of our web applications.</p>
+                <p>We will apply the RESRful architectural style to create the server part of our applications, so need to know the basic principles of this architecture.</p>
             </section>
         </section>
 
@@ -85,7 +85,7 @@
             <section>
                 <p>To <em>install</em>, just open a terminal and write:</p>
                 <pre><code lang="console" data-trim="">
-npm install --save express
+npm install express --save
                 </code></pre>
                 <p>npm will search for Express and download it in your current folder.</p>
                 <p>You can check for it in the <strong>node_modules</strong> folder.</p>
@@ -141,7 +141,7 @@ app.get('/', function (req, res) {
     res.send('Hello World!');
 });
                 </code></pre>
-                <p>In this example we are how to respond when someone requests the URI <strong>http://localhost:3000/</strong> using a <strong>GET</strong> method. The handler is the javascript function which is executed to generate the response.</p>
+                <p>This example shows how to respond when someone requests the URI <strong>http://localhost:3000/</strong> using a <strong>GET</strong> method. The handler is a javascript function which is executed to generate the response.</p>
             </section>
         </section>
 
@@ -172,9 +172,9 @@ app.get('/', function (req, res) {
                 <p>The general, very general, recipe to create a RESTful web application is:</p>
                 <ol>
                     <li>To determine the resources of your application.</li>
-                    <li>To determine the valid representations for those resources.</li>
-                    <li>To define the URIs to access to those resources.</li>
-                    <li>To determine the valid HTTP methods to access your resources.</li>
+                    <li>To determine the valid representations for the resources.</li>
+                    <li>To define the URIs to access to the resources.</li>
+                    <li>To determine the valid HTTP methods to access the resources.</li>
                     <li>To determine the links between different resources.</li>
                 </ol>
             </section>
@@ -210,7 +210,7 @@ app.get('/', function (req, res) {
                     <tr><th>URI</th><th>Method</th><th>Meaning</th></tr>
                     </thead>
                     <tbody>
-                        <tr><td>http://myFancyCatalog.com/catalog/{id}</td><td>POST</td><td>Updates a product already present in the catalog</td></tr>
+                        <tr><td>http://myFancyCatalog.com/catalog/{id}</td><td>PUT</td><td>Updates a product already present in the catalog</td></tr>
                         <tr><td></td><td>DELETE</td><td>Deletes the product with code id</td></tr>
                     </tbody>
                 </table>
@@ -287,8 +287,7 @@ app.get("/", function(req,res) {
             </section>
 
             <section>
-                <p><strong>Exercise</strong></p>
-                <p>Implement the code for the following service:</p>
+                <p><strong>Exercise:</strong> Implement the code for the following service:</p>
                 <table>
                     <thead>
                         <tr><th>URI</th><th>Method</th><th>Meaning</th></tr>
@@ -303,7 +302,8 @@ app.get("/catalog/:id", function(req, res, next) {
 }
                 </code></pre>
                 <p><strong>Help 1:</strong> to get the request parameter <strong>id</strong> use <strong>req.params.id</strong></p>
-                <p><strong>Help 2:</strong> the third parameter in the function <strong>next</strong> is used to throw an error. So if there is no product with code <stron>id</stron> you can throw an error <strong>next("No product with code " + id + " found.");</strong>.</p>
+                <p><strong>Help 2:</strong> the third parameter in the function, <strong>next</strong>, is used to throw an error. So, if there is no product with code <stron>id</stron> you can throw an error <strong>next("No product with code " + id + " found.");</strong>.</p>
+                <p><strong>Help 3:</strong> set a status code with <strong>res.status(code)</strong>, for Not found &rarr; code=404.</p>
             </section>
 
             <section>
