@@ -87,14 +87,12 @@
 $ mongo
 MongoDB shell version: 3.2.0
 connecting to: test
->
                 </code></pre>
                 <p>By default, when you start the Mongo shell the <strong>test</strong> database is automatically selected. If you want to use another one type:</p>
                 <pre><code lang="javascript" data-trim>
 mongo catalog
 MongoDB shell version: 3.2.0
 connecting to: catalog
->
                 </code></pre>
             </section>
 
@@ -102,41 +100,30 @@ connecting to: catalog
                 <p>To see the databases in the <strong>MongoDB</strong> manager:</p>
                 <pre><code lang="console" data-trim>
 > show dbs
-catalog  0.000GB
 local    0.000GB
->
                 </code></pre>
-                <p>To change to a particular database:</p>
+                <p>To change/create to a particular database:</p>
                 <pre><code lang="console" data-trim>
 > use catalog
 switched to db catalog
->
                 </code></pre>
                 <p>To see the collections in a database:</p>
                 <pre><code lang="console" data-trim>
 > show collections
-products
->
                 </code></pre>
             </section>
 
             <section>
-                <p>To find all documents in the collection:</p>
-                <pre><code lang="console" data-trim>
-> db.products.find()
->
-                </code></pre>
                 <p>We have no products in the collection yet. Let's add the first product:</p>
                 <pre><code lang="console" data-trim>
 > db.products.save({"id":"1", "name":"USB drive", "price":10})
 WriteResult({ "nInserted" : 1 })
 >
                 </code></pre>
-                <p>Let's see how documents are found now:</p>
+                <p>To find all documents in the collection:</p>
                 <pre><code lang="console" data-trim>
 > db.products.find()
 { "_id" : ObjectId("568b64ed3d89d76b0731ec76"), "id" : "1", "name" : "USB drive", "price" : 10 }
->
                 </code></pre>
                 <p>Note the <strong>_id</strong> attribute, its an internal key for this particular document in the database.</p>
             </section>
@@ -146,13 +133,11 @@ WriteResult({ "nInserted" : 1 })
                 <pre><code lang="console" data-trim>
 > db.products.update({"id":"1"}, {$set:{"price":11}})
 WriteResult({ "nMatched" : 1, "nUpserted" : 0, "nModified" : 1 })
->
                 </code></pre>
                 <p>Check the update using:</p>
                 <pre><code lang="console" data-trim>
 > db.products.find()
 { "_id" : ObjectId("568b64ed3d89d76b0731ec76"), "id" : "1", "name" : "USB drive", "price" : 11 }
->
                 </code></pre>
                 <p>Alternatively, you can try to find just one document:</p>
                 <pre><code lang="console" data-trim>
@@ -163,7 +148,6 @@ WriteResult({ "nMatched" : 1, "nUpserted" : 0, "nModified" : 1 })
     "name" : "USB drive",
     "price" : 10
 }
->
                 </code></pre>
             </section>
 
@@ -172,12 +156,10 @@ WriteResult({ "nMatched" : 1, "nUpserted" : 0, "nModified" : 1 })
                 <pre><code lang="console" data-trim>
 > db.products.remove({"id":"1"})
 WriteResult({ "nRemoved" : 1 })
->
                 </code></pre>
                 <p>Try to find it out again:</p>
                 <pre><code lang="console" data-trim>
 > db.products.find()
->
                 </code></pre>
                 <p>No documents are reported now.</p>
             </section>
@@ -195,6 +177,18 @@ WriteResult({ "nRemoved" : 1 })
                         <tr><td>Delete</td><td>db.collection.remove()</td></tr>
                     </tbody>
                 </table>
+                </section>
+
+            <section>
+                <p>You can remove an entire database:</p>
+                <pre><code lang="javascript" data-trim>
+db.use("catalog")
+db.dropDatabase()
+                </code></pre>
+                <p>You can quit the mongo console typing:</p>
+                <pre><code lang="javascript" data-trim>
+quit()
+                </code></pre>
                 <p>You can check a complete introduction in <a href="https://docs.mongodb.org/getting-started/shell/" target="_blank">Getting started with MongoDB</a>.</p>
             </section>
         </section>
