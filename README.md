@@ -1,2 +1,2 @@
 # WebDevelopmentPresenttions
-Presentations for the SW006 subject in the Masters' Degree of Geospatial Technologies.
+Presentations for the SIW006 subject in the Masters' Degree of Geospatial Technologies.
