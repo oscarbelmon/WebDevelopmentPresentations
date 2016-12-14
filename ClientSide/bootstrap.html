@@ -147,6 +147,7 @@ Is this ok? (yes)
           <section>
             <p>
               Now, lets add <strong>Bootstrap</strong> as a dependency:
+            </p>
               <pre>
                 <code class="console" data-trim>npm install bootstrap --save
 first_project@1.0.0 /Users/oscar/Oscar/Oscar/Docencia/Asignaturas/Curso2016-2017/ErasmusMundus/Pruebas/first_project
@@ -155,12 +156,12 @@ first_project@1.0.0 /Users/oscar/Oscar/Oscar/Docencia/Asignaturas/Curso2016-2017
 npm WARN first_project@1.0.0 No repository field.
                 </code>
               </pre>
-            </p>
           </section>
 
           <section>
             <p>
               Lets review our <strong>package.json</strong> file:
+            </p>
               <pre>
                 <code class="json" data-trim>{
   "name": "first_project",
@@ -182,98 +183,11 @@ npm WARN first_project@1.0.0 No repository field.
 }
                 </code>
               </pre>
-            </p>
             <p>
               Note that <strong>bootstrap</strong> appears as a dependency in our project.
             </p>
           </section>
         </section>
-
-        <!-- <section id="creating_project_bower">
-            <h3>Creating our first project with Bower</h3>
-            <section>
-                <p>First of all, we are going to create our first project using <strong>Bower</strong>.</p>
-                <pre><code lang="cosole" data-trim=>
-$ bower init
-? name: (First) ExampleProjects
-? version: 0.0.1
-? description: Bootstrap example
-? main file: index.html
-? what types of modules does this package expose?
-? keywords:
-? authors: &Oacute;scar Belmonte Fern&aacute;ndez &lt;oscar.belmonte@uji.es&gt;
-? license: MIT
-? homepage:
-? set currently installed components as dependencies? Yes
-? add commonly ignored files to ignore list? Yes
-? would you like to mark this package as private which prevents it from being accidentally published ? would you like to mark this package as private which prevents it from being accidentally published to the registry? No
-
-{
-    name: 'Example projects',
-    version: '0.0.1',
-    authors: [
-        '&Oacute;scar Belmonte Fern&aacute;ndez &lt;oscar.belmonte@uji.es&gt;'
-    ],
-    description: 'Bootstrap example',
-    main: 'index.html',
-    license: 'MIT',
-    ignore: [
-        '**/.*',
-        'node_modules',
-        'bower_components',
-        'test',
-        'tests'
-    ]
-}
-
-? Looks good? Yes
-                </code></pre>
-            </section>
-
-            <section>
-                <p>Next, lets add <strong>Bootstrap</strong> as a dependency:</p>
-                <pre><code lang="console" data-trim>
-$ bower install bootstrap --save
-bower cached        git://github.com/twbs/bootstrap.git#3.3.5
-bower validate      3.3.5 against git://github.com/twbs/bootstrap.git#*
-bower cached        git://github.com/jquery/jquery.git#2.1.4
-bower validate      2.1.4 against git://github.com/jquery/jquery.git#&gt;= 1.9.1
-bower install       bootstrap#3.3.5
-bower install       jquery#2.1.4
-
-bootstrap#3.3.5 bootstrap
-&#9492;&#9472;&#9472; jquery#2.1.4
-
-jquery#2.1.4 jquery
-                </code></pre>
-            </section>
-
-            <section>
-                <p>This is the final <strong>bower.json</strong> file:</p>
-                <pre><code lang="json" data-trim>
-{
-    &quot;name&quot;: &quot;ExampleProjects&quot;,
-    &quot;version&quot;: &quot;0.0.1&quot;,
-    &quot;authors&quot;: [
-        &quot;&Oacute;scar Belmonte Fern&aacute;ndez &lt;oscar.belmonte@uji.es&gt;&quot;
-    ],
-    &quot;description&quot;: &quot;Bootstrap example&quot;,
-    &quot;main&quot;: &quot;index.html&quot;,
-    &quot;license&quot;: &quot;MIT&quot;,
-    &quot;ignore&quot;: [
-        &quot;**/.*&quot;,
-        &quot;node_modules&quot;,
-        &quot;bower_components&quot;,
-        &quot;test&quot;,
-        &quot;tests&quot;
-    ],
-    &quot;dependencies&quot;: {
-        &quot;bootstrap&quot;: &quot;~3.3.5&quot;
-    }
-}
-                </code></pre>
-            </section>
-        </section> -->
 
         <section id="creating_first_bootstrap">
             <h3>Creating our first Bootstrap Web page</h3>
@@ -308,7 +222,7 @@ jquery#2.1.4 jquery
 
             <section>
                 <p>And this is the result:</p>
-                <img src="img/firstPage.png" height="350">
+                <img src="img/firstPage.png" height="350" alt="first page">
             </section>
 
             <section>
@@ -370,7 +284,7 @@ jquery#2.1.4 jquery
 
             <section>
                 <p>Finally, This is the result of applying the Bootstrap style:</p>
-                <img src="img/firstBootstrapPage.png">
+                <img src="img/firstBootstrapPage.png" alt="first page">
             </section>
         </section>
 
@@ -444,7 +358,7 @@ var getData = function() {
 
             <section>
                 <p>Re-load and you will see the same web page as before:</p>
-                <img src="img/firstBootstrapPage.png">
+                <img src="img/firstBootstrapPage.png" alt="first bootstrap page">
                 <p>But now, the data we are presenting it's separated from the way we are presenting it. That's very good.</p>
             </section>
         </section>
@@ -466,7 +380,7 @@ var getData = function() {
                 <pre><code class="html" data-trim>
 &lt;td&gt;&lt;button type=&quot;button&quot; class=&quot;btn btn-info&quot;&gt;Info&lt;/button&gt;&lt;/td&gt;
                 </code></pre>
-                <img src="img/firstBootstrapPageButtons.png">
+                <img src="img/firstBootstrapPageButtons.png" alt="bootstrap buttons">
             </section>
 
             <section>
@@ -510,7 +424,7 @@ var currentIndex = function(index) {
 
             <section>
                 <p>Done!!! This is how our web applications looks like:</p>
-                <img src="img/modal.png">
+                <img src="img/modal.png" alt="bootstrap modal window">
             </section>
         </section>
 
@@ -548,7 +462,7 @@ var currentIndex = function(index) {
 
             <section>
                 <p>This is the result:</p>
-                <img src="img/bootstrapGrid.png">
+                <img src="img/bootstrapGrid.png" alt="bootstrap grid example">
             </section>
         </section>
 
