@@ -72,7 +72,7 @@
             <section>
                 <ol>
                     <li><a href="#/what_is_bootstrap">What is <strong>Bootstrap</strong>?</a></li>
-                    <li><a href="#/creating_project_bower">Creating our first project with <strong>Bower</strong>.</a> </li>
+                    <li><a href="#/creating_project_npm">Creating our first project with <strong>npm</strong>.</a> </li>
                     <li><a href="#/creating_first_bootstrap">Creating our first <strong>Bootstrap</strong> Web page</a>.</li>
                     <li><a href="#/refactoring">Refactoring our code</a></li>
                     <li><a href="#/adding_content">Adding other elements</a>.</li>
@@ -86,7 +86,7 @@
         <section id="what_is_bootstrap">
             <h3>What is Bootstrap?</h3>
             <section>
-                <div><img class="before-quote" src="../Presentation/img/bootstrap.png" height="100px"></div>
+                <div><img class="before-quote" src="../Presentation/img/bootstrap.png" width="100" alt="Bootstrap logo"></div>
                 <blockquote cite="http://getbootstrap.com/">
                     Bootstrap is the most popular HTML, CSS, and JS framework for developing responsive, mobile first projects on the web.
                 </blockquote>
@@ -94,7 +94,102 @@
             </section>
         </section>
 
-        <section id="creating_project_bower">
+        <!-- First project with npm -->
+        <section id="creating_project_npm">
+          <h3>Creating our first project with npm</h3>
+          <section>
+            For creating a new project using npm, open a terminal (cosole) and type:
+            <pre>
+              <code class="console" data-trim>$npm init
+This utility will walk you through creating a package.json file.
+It only covers the most common items, and tries to guess sensible defaults.
+
+See `npm help json` for definitive documentation on these fields
+and exactly what they do.
+
+Use `npm install &lt;pkg&gt; --save` afterwards to install a package and
+save it as a dependency in the package.json file.
+
+Press ^C at any time to quit.
+name: (first_project)
+version: (1.0.0)
+description: My first project using npm.
+entry point: (index.js) index.html
+test command:
+git repository:
+keywords: npm bootstrap
+author: &Oacute;scar Belmonte Fern&aacute;ndez
+license: (ISC)
+About to write to /Users/oscar/Oscar/Oscar/Docencia/Asignaturas/Curso2016-2017/ErasmusMundus/Pruebas/first_project/package.json:
+
+{
+  &quot;name&quot;: &quot;first_project&quot;,
+  &quot;version&quot;: &quot;1.0.0&quot;,
+  &quot;description&quot;: &quot;My first project using npm.&quot;,
+  &quot;main&quot;: &quot;index.html&quot;,
+  &quot;scripts&quot;: {
+    &quot;test&quot;: &quot;echo \&quot;Error: no test specified\&quot; &amp;&amp; exit 1&quot;
+  },
+  &quot;keywords&quot;: [
+    &quot;npm&quot;,
+    &quot;bootstrap&quot;
+  ],
+  &quot;author&quot;: &quot;&Oacute;scar Belmonte Fern&aacute;ndez&quot;,
+  &quot;license&quot;: &quot;ISC&quot;
+}
+
+
+Is this ok? (yes)
+              </code>
+            </pre>
+          </section>
+
+          <section>
+            <p>
+              Now, lets add <strong>Bootstrap</strong> as a dependency:
+              <pre>
+                <code class="console" data-trim>npm install bootstrap --save
+first_project@1.0.0 /Users/oscar/Oscar/Oscar/Docencia/Asignaturas/Curso2016-2017/ErasmusMundus/Pruebas/first_project
+└── bootstrap@3.3.7
+
+npm WARN first_project@1.0.0 No repository field.
+                </code>
+              </pre>
+            </p>
+          </section>
+
+          <section>
+            <p>
+              Lets review our <strong>package.json</strong> file:
+              <pre>
+                <code class="json" data-trim>{
+  "name": "first_project",
+  "version": "1.0.0",
+  "description": "My first project using npm.",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "npm",
+    "bootstrap"
+  ],
+  "author": "Óscar Belmonte Fernández",
+  "license": "ISC",
+  "dependencies": {
+    "bootstrap": "^3.3.7"
+  }
+}
+                </code>
+              </pre>
+            </p>
+            <p>
+              Note that <strong>bootstrap</strong> appears as a dependency in our project.
+            </p>
+          </section>
+        </section>
+
+        <!-- <section id="creating_project_bower">
             <h3>Creating our first project with Bower</h3>
             <section>
                 <p>First of all, we are going to create our first project using <strong>Bower</strong>.</p>
@@ -178,7 +273,7 @@ jquery#2.1.4 jquery
 }
                 </code></pre>
             </section>
-        </section>
+        </section> -->
 
         <section id="creating_first_bootstrap">
             <h3>Creating our first Bootstrap Web page</h3>
@@ -210,12 +305,12 @@ jquery#2.1.4 jquery
 &lt;/html&gt;
                 </code></pre>
             </section>
-            
+
             <section>
                 <p>And this is the result:</p>
-                <img src="img/firstPage.png" height="350px">
+                <img src="img/firstPage.png" height="350">
             </section>
-            
+
             <section>
                 <p>Let's add Bootstrap style in the title section:</p>
                 <pre><code class="html" data-trim>
@@ -291,13 +386,18 @@ jquery#2.1.4 jquery
             </section>
 
             <section>
-                <p>First things first, remove all data in the table:</p>
+                <p>First things first, lets remove all data in the table:</p>
                 <pre><code lang="html" data-trim>
 &lt;table class=&quot;table table-hover&quot;&gt;
     &lt;thead&gt;
         &lt;tr&gt;&lt;td&gt;&lt;strong&gt;Name&lt;/strong&gt;&lt;/td&gt;&lt;td&gt;&lt;strong&gt;Surname&lt;/strong&gt;&lt;/td&gt;&lt;/tr&gt;
     &lt;/thead&gt;
     &lt;tbody id=&quot;peopleBody&quot;&gt;
+      &lt;tr&gt;
+        &lt;td&gt;
+          &lt;script&gt;getData();&lt;/script&gt;
+        &lt;/td&gt;
+      &lt;/tr&gt;
     &lt;/tbody&gt;
 &lt;/table&gt;
                 </code></pre>
@@ -445,7 +545,7 @@ var currentIndex = function(index) {
 &lt;/div&gt;
                 </code></pre>
             </section>
-            
+
             <section>
                 <p>This is the result:</p>
                 <img src="img/bootstrapGrid.png">
