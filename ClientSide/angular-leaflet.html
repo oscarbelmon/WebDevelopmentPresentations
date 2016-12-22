@@ -97,6 +97,7 @@
                     <li>Install the following modules:</li>
                     <ol>
                         <li>bootstrap.</li>
+                        <li>jquery</li>
                         <li>angular.</li>
                         <li>leaflet.</li>
                         <li>angular-leaflet-directive</li>
@@ -104,7 +105,7 @@
                 </ol>
                 <p>Remember, just type the following to install a module in your project:</p>
                 <pre><code lang="console" data-trim>
-bower install --save bootstrap
+npm install --save bootstrap
                 </code></pre>
             </section>
 
@@ -115,20 +116,20 @@ bower install --save bootstrap
 &lt;html lang=&quot;en&quot; ng-app=&quot;app&quot;&gt;
 &lt;head&gt;
     &lt;meta charset=&quot;UTF-8&quot;&gt;
-    &lt;link href=&quot;./bower_components/bootstrap/dist/css/bootstrap.css&quot; rel=&quot;stylesheet&quot;&gt;
-    &lt;link href=&quot;./bower_components/leaflet/dist/leaflet.css&quot; rel=&quot;stylesheet&quot;&gt;
-    &lt;script src=&quot;./bower_components/jquery/dist/jquery.js&quot;&gt;&lt;/script&gt;
-    &lt;script src=&quot;./bower_components/bootstrap/dist/js/bootstrap.js&quot;&gt;&lt;/script&gt;
-    &lt;script src=&quot;./bower_components/angular/angular.js&quot;&gt;&lt;/script&gt;
-    &lt;script src=&quot;./bower_components/leaflet/dist/leaflet.js&quot;&gt;&lt;/script&gt;
-    &lt;script src=&quot;./bower_components/angular-leaflet-directive/dist/angular-leaflet-directive.js&quot;&gt;&lt;/script&gt;
+    &lt;link href=&quot;./node_modules/bootstrap/dist/css/bootstrap.css&quot; rel=&quot;stylesheet&quot;&gt;
+    &lt;link href=&quot;./node_modules/leaflet/dist/leaflet.css&quot; rel=&quot;stylesheet&quot;&gt;
+    &lt;script src=&quot;./node_modules/jquery/dist/jquery.js&quot;&gt;&lt;/script&gt;
+    &lt;script src=&quot;./node_modules/bootstrap/dist/js/bootstrap.js&quot;&gt;&lt;/script&gt;
+    &lt;script src=&quot;./node_modules/angular/angular.js&quot;&gt;&lt;/script&gt;
+    &lt;script src=&quot;./node_modules/leaflet/dist/leaflet.js&quot;&gt;&lt;/script&gt;
+    &lt;script src=&quot;./node_modules/angular-leaflet-directive/dist/angular-leaflet-directive.js&quot;&gt;&lt;/script&gt;
     &lt;script src=&quot;./js/myScripts.js&quot;&gt;&lt;/script&gt;
     &lt;title&gt;My first AngularJS and Leaflet map&lt;/title&gt;
 &lt;/head&gt;
 &lt;body ng-controller=&quot;TheController&quot;&gt;
     &lt;div class=&quot;container&quot;&gt;
         &lt;h1&gt;My first Angular and Leaftlet map&lt;/h1&gt;
-        &lt;leaflet height=&quot;480px&quot; width=&quot;100%&quot;&gt;&lt;/leaflet&gt;
+        &lt;leaflet tiles=&quot;tiles&quot; height=&quot;480px&quot; width=&quot;100%&quot;&gt;&lt;/leaflet&gt;
     &lt;/div&gt;
 &lt;/body&gt;
 &lt;/html&gt;
@@ -141,10 +142,17 @@ bower install --save bootstrap
 var app = angular.module("app", ["leaflet-directive"]);
 
 app.controller("TheController", ["$scope", function($scope) {
-
+  angular.extend($scope, {
+    tiles: {
+      url: "http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+         options: {
+             attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+           }
+    }
+  })
 }]);
                 </code></pre>
-                <p>That's all! start your application within <strong>WebStorm</strong> and you will see the result.</p>
+                <p>That's all! reload your browser to see the result.</p>
             </section>
 
             <section>
@@ -155,18 +163,24 @@ app.controller("TheController", ["$scope", function($scope) {
             <section>
                 <p>If you want to render a map centered at some point, change the following line in the html file :</p>
                 <pre><code lang="html" data-trim>
-                    &lt;leaflet lf-center=&quot;castellon&quot; height=&quot;480px&quot; width=&quot;100%&quot;&gt;&lt;/leaflet&gt;
+                  &lt;leaflet id=&quot;firstMap&quot; tiles=&quot;tiles&quot; lf-center=&quot;castellon&quot; height=&quot;480px&quot; width=&quot;100%&quot;&gt;&lt;/leaflet&gt;
                 </code></pre>
                 <p>And write this code inside the <strong>controller</strong> function:</p>
                 <pre><code lang="javascript" data-trim>
 app.controller("TheController", ["$scope", function($scope) {
-    angular.extend($scope, {
-        castellon: {
-            lat: 39.98685368305097,
-            lng: -0.04566192626953125,
-            zoom: 14
-        }
-    })
+  angular.extend($scope, {
+    castellon: {
+        lat: 39.98685368305097,
+        lng: -0.04566192626953125,
+        zoom: 14
+    },
+    tiles: {
+      url: "http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+         options: {
+             attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+           }
+    }
+  })
 }]);
                 </code></pre>
             </section>
@@ -184,7 +198,7 @@ app.controller("TheController", ["$scope", function($scope) {
                 <p>Let's sum app all technologies we have seen to build a something fancy.</p>
                 <p>First, let's see how to add a marker to our map. Add a new attribute <strong>makers</strong> to the <strong>leaflet</strong> element.</p>
                 <pre><code lang="html" data-trim>
-&lt;leaflet lf-center=&quot;castellon&quot; markers=&quot;markers&quot; height=&quot;480px&quot; width=&quot;100%&quot;&gt;&lt;/leaflet&gt;
+&lt;leaflet tiles=&quot;castellon&quot; lf-center=&quot;castellon&quot; markers=&quot;markers&quot; height=&quot;480px&quot; width=&quot;100%&quot;&gt;&lt;/leaflet&gt;
                 </code></pre>
                 <p>This attribute will contain the markers in our map.</p>
             </section>
