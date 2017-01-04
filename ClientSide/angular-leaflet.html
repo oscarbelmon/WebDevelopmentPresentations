@@ -281,7 +281,7 @@ $scope.$on("leafletDirectiveMap.mousedown", function (event,args) {
             &lt;h2&gt;TODO list&lt;/h2&gt;
             &lt;table class=&quot;table&quot;&gt;
                 &lt;thead&gt;
-                    &lt;tr&gt;&lt;th&gt;Message&lt;/th&gt;&lt;&lt;/tr&gt;
+                    &lt;tr&gt;&lt;th&gt;Message&lt;/th&gt;&lt;/tr&gt;
                 &lt;/thead&gt;
                 &lt;tbody&gt;
                     &lt;tr&gt;
@@ -387,7 +387,7 @@ $scope.showInfo = function(index) {
                 <pre><code lang="html" data-trim>
 &lt;div class=&quot;modal-body&quot;&gt;
     &lt;p&gt;Change the item here:&lt;/p&gt;
-    &lt;p&gt;Message&lt;input type=&quot;text&quot; ng-model=&quot;currentMarker.message&quot;&gt;&lt;/p&gt;
+    &lt;p&gt;Message:&lt;input type=&quot;text&quot; ng-model=&quot;currentMarker.message&quot;&gt;&lt;/p&gt;
 &lt;/div&gt;
                 </code></pre>
                 <p class="center"><img src="img/leafletModal2.png" width="450px"></p>
@@ -426,7 +426,7 @@ $scope.markers.push({
     dueDate: new Date()
 });
                 </code></pre>
-                <p>Finally, link with the modal window:</p>
+                <p>Finally, link it in the modal window:</p>
                 <pre><code lang="html" data-trim>
 &lt;p&gt;&lt;input type=&quot;datetime-local&quot; ng-model=&quot;currentMarker.dueDate&quot;&gt;&lt;/p&gt;
                 </code></pre>
@@ -439,8 +439,8 @@ $scope.markers.push({
             </section>
 
             <section>
-                <p>Let's try something new. I would be fancy if we can get the postal address of each location.</p>
-                <p>The <a href="http://nominatim.openstreetmap.org/" target="_blank">Nominatim OpenStreetMap</a> provides a free service for reverse geocoding: it returns the postal address given its coordinates.</p>
+                <p>Let's try something new. It would be fancy if we can get the postal address of each location.</p>
+                <p>The <a href="http://nominatim.openstreetmap.org/" target="_blank">Nominatim OpenStreetMap</a> provides a free service for reverse geocoding: it returns the postal address given its geographic coordinates.</p>
                 <p>How do we request a service using the http protocol in <strong>AngularJS</strong>?</p>
                 <p><strong>AngularJS</strong> can inject a new  reference for doing that <strong>$http</strong>.</p>
                 <pre><code lang="javascript" data-trim>
@@ -508,10 +508,10 @@ function addMarker(response) {
             <h3>Exercises</h3>
             <section>
                 <ol>
+                    <li>Add a show button like in the image (Tip: use the focus attribute).</li>
                     <li>Add a new remove button to any item in the Geo-TODO application.</li>
-                    <li>Add a show button like in the image.</li>
                 </ol>
-                <p class="center"><img src="img/leafletShow.png" width="500px"></p>
+                <p class="center"><img src="img/geoTODO.png" width="500px"></p>
             </section>
         </section>
 
@@ -519,8 +519,6 @@ function addMarker(response) {
 
 </div> <!-- reveal -->
 
-<!--<script src="../reveal/lib/js/head.min.js"></script>-->
-<!--<script src="../reveal/js/reveal.js"></script>-->
 <script src="../reveal-js/lib/js/head.min.js"></script>
 <script src="../reveal-js/js/reveal.js"></script>
 
