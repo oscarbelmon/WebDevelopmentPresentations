@@ -99,30 +99,30 @@ connecting to: catalog
             <section>
                 <p>To see the databases in the <strong>MongoDB</strong> manager:</p>
                 <pre><code lang="console" data-trim>
-> show dbs
+&gt; show dbs
 local    0.000GB
                 </code></pre>
                 <p>To change/create to a particular database:</p>
                 <pre><code lang="console" data-trim>
-> use catalog
+&gt; use catalog
 switched to db catalog
                 </code></pre>
                 <p>To see the collections in a database:</p>
                 <pre><code lang="console" data-trim>
-> show collections
+&gt; show collections
                 </code></pre>
             </section>
 
             <section>
                 <p>We have no products in the collection yet. Let's add the first product:</p>
                 <pre><code lang="console" data-trim>
-> db.products.save({"id":"1", "name":"USB drive", "price":10})
+&gt; db.products.save({"id":"1", "name":"USB drive", "price":10})
 WriteResult({ "nInserted" : 1 })
->
+&gt;
                 </code></pre>
                 <p>To find all documents in the collection:</p>
                 <pre><code lang="console" data-trim>
-> db.products.find()
+&gt; db.products.find()
 { "_id" : ObjectId("568b64ed3d89d76b0731ec76"), "id" : "1", "name" : "USB drive", "price" : 10 }
                 </code></pre>
                 <p>Note the <strong>_id</strong> attribute, its an internal key for this particular document in the database.</p>
@@ -131,17 +131,17 @@ WriteResult({ "nInserted" : 1 })
             <section>
                 <p>To update an existing document in the database:</p>
                 <pre><code lang="console" data-trim>
-> db.products.update({"id":"1"}, {$set:{"price":11}})
+&gt; db.products.update({"id":"1"}, {$set:{"price":11}})
 WriteResult({ "nMatched" : 1, "nUpserted" : 0, "nModified" : 1 })
                 </code></pre>
                 <p>Check the update using:</p>
                 <pre><code lang="console" data-trim>
-> db.products.find()
+&gt; db.products.find()
 { "_id" : ObjectId("568b64ed3d89d76b0731ec76"), "id" : "1", "name" : "USB drive", "price" : 11 }
                 </code></pre>
                 <p>Alternatively, you can try to find just one document:</p>
                 <pre><code lang="console" data-trim>
-> db.products.findOne();
+&gt; db.products.findOne();
 {
     "_id" : ObjectId("568b70fc3d89d76b0731ec77"),
     "id" : "1",
@@ -154,12 +154,12 @@ WriteResult({ "nMatched" : 1, "nUpserted" : 0, "nModified" : 1 })
             <section>
                 <p>To remove a particular document from the database:</p>
                 <pre><code lang="console" data-trim>
-> db.products.remove({"id":"1"})
+&gt; db.products.remove({"id":"1"})
 WriteResult({ "nRemoved" : 1 })
                 </code></pre>
                 <p>Try to find it out again:</p>
                 <pre><code lang="console" data-trim>
-> db.products.find()
+&gt; db.products.find()
                 </code></pre>
                 <p>No documents are reported now.</p>
             </section>
@@ -187,7 +187,7 @@ db.dropDatabase()
                 </code></pre>
                 <p>You can quit the mongo console typing:</p>
                 <pre><code lang="javascript" data-trim>
-quit()
+exit
                 </code></pre>
                 <p>You can check a complete introduction in <a href="https://docs.mongodb.org/getting-started/shell/" target="_blank">Getting started with MongoDB</a>.</p>
             </section>
