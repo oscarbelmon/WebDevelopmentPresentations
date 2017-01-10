@@ -146,6 +146,20 @@ Is this ok? (yes)
 
           <section>
             <p>
+              First, lets add <strong>jquery</strong>, because <strong>Bootstrap</strong> depends on it:
+            </p>
+            <pre>
+              <code class="console" data-trim>npm install bootstrap --save
+first_project@1.0.0 /Users/oscar/Oscar/Oscar/Docencia/Asignaturas/Curso2016-2017/ErasmusMundus/Pruebas/first_project
+└── jquery@3.1.1
+
+npm WARN first_project@1.0.0 No repository field.
+              </code>
+            </pre>
+          </section>
+
+          <section>
+            <p>
               Now, lets add <strong>Bootstrap</strong> as a dependency:
             </p>
               <pre>
@@ -178,6 +192,7 @@ npm WARN first_project@1.0.0 No repository field.
   "author": "Óscar Belmonte Fernández",
   "license": "ISC",
   "dependencies": {
+    "jquery": "^3.1.1",
     "bootstrap": "^3.3.7"
   }
 }
