@@ -99,8 +99,8 @@
           <h3>Creating our first project with npm</h3>
           <section>
             For creating a new project using npm, open a terminal (cosole) and type:
-            <pre>
-              <code class="console" data-trim>$npm init
+            <pre><code class="console" data-trim>
+$npm init
 This utility will walk you through creating a package.json file.
 It only covers the most common items, and tries to guess sensible defaults.
 
@@ -140,44 +140,41 @@ About to write to /Users/oscar/Oscar/Oscar/Docencia/Asignaturas/Curso2016-2017/E
 
 
 Is this ok? (yes)
-              </code>
-            </pre>
+              </code></pre>
           </section>
 
           <section>
             <p>
               First, lets add <strong>jquery</strong>, because <strong>Bootstrap</strong> depends on it:
             </p>
-            <pre>
-              <code class="console" data-trim>npm install bootstrap --save
+            <pre><code class="console" data-trim>
+npm install jquery --save
 first_project@1.0.0 /Users/oscar/Oscar/Oscar/Docencia/Asignaturas/Curso2016-2017/ErasmusMundus/Pruebas/first_project
 └── jquery@3.1.1
 
 npm WARN first_project@1.0.0 No repository field.
-              </code>
-            </pre>
+              </code></pre>
           </section>
 
           <section>
             <p>
               Now, lets add <strong>Bootstrap</strong> as a dependency:
             </p>
-              <pre>
-                <code class="console" data-trim>npm install bootstrap --save
+              <pre><code class="console" data-trim>
+npm install bootstrap --save
 first_project@1.0.0 /Users/oscar/Oscar/Oscar/Docencia/Asignaturas/Curso2016-2017/ErasmusMundus/Pruebas/first_project
 └── bootstrap@3.3.7
 
 npm WARN first_project@1.0.0 No repository field.
-                </code>
-              </pre>
+                </code></pre>
           </section>
 
           <section>
             <p>
               Lets review our <strong>package.json</strong> file:
             </p>
-              <pre>
-                <code class="json" data-trim>{
+              <pre><code class="json" data-trim>
+{
   "name": "first_project",
   "version": "1.0.0",
   "description": "My first project using npm.",
@@ -196,8 +193,7 @@ npm WARN first_project@1.0.0 No repository field.
     "bootstrap": "^3.3.7"
   }
 }
-                </code>
-              </pre>
+                </code></pre>
             <p>
               Note that <strong>bootstrap</strong> appears as a dependency in our project.
             </p>
