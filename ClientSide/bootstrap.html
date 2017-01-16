@@ -241,16 +241,19 @@ npm WARN first_project@1.0.0 No repository field.
                 <pre><code class="html" data-trim>
 &lt;title&gt;My first web page&lt;/title&gt;
     ...
-    &lt;link href=&quot;../bootstrap/dist/css/bootstrap.css&quot; rel=&quot;stylesheet&quot;&gt;
+    &lt;link href=&quot;{path}/node_modules/bootstrap/dist/css/bootstrap.css&quot; rel=&quot;stylesheet&quot;&gt;
 &lt;/head&gt;
                 </code></pre>
+                <p>
+                  Where {path} is your relative path to the <strong>node_modules</strong> folder.
+                </p>
                 <p>And some <strong>div</strong> elements around the whole page:</p>
                 <pre><code lang="html" data-trim>
 &lt;body&gt;
-    &lt;div class=&quot;container&quot;&gt;
-        &lt;div class=&quot;starter-template&quot;&gt;
+    &lt;div class=&quot;container&quot;&gt; &lt;!-- Note the container class --&gt;
+        &lt;div class=&quot;starter-template&quot;&gt; &lt;!-- Note the starter-template class --&gt;
             &lt;h1&gt;This is my first web page&lt;/h1&gt;
-            &lt;table class=&quot;table table-hover&quot;&gt;
+            &lt;table class=&quot;table table-hover&quot;&gt; &lt;!-- Note the table and table-hover classes --&gt;
                     ...
             &lt;/table&gt;
         &lt;/div&gt;
@@ -269,7 +272,7 @@ npm WARN first_project@1.0.0 No repository field.
     &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=edge&quot;&gt;
     &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;&gt;
     &lt;title&gt;My first web page&lt;/title&gt;
-    &lt;link href=&quot;bootstrap/dist/css/bootstrap.css&quot; rel=&quot;stylesheet&quot;&gt;
+    &lt;link href=&quot;{path}/node_modules/bootstrap/dist/css/bootstrap.css&quot; rel=&quot;stylesheet&quot;&gt;
 &lt;/head&gt;
 &lt;body&gt;
     &lt;div class=&quot;container&quot;&gt;
@@ -381,8 +384,8 @@ var getData = function() {
                 <p>Bootstarp provides lots of different elements to be added to our web pages.</p>
                 <p>To start using them, we must include the following <strong>scripts</strong> in the web page header:</p>
                 <pre><code lang="html" data-trim>
-&lt;script src=&quot;../bower_components/jquery/dist/jquery.js&quot;&gt;&lt;/script&gt;
-&lt;script src=&quot;../bower_components/bootstrap/dist/js/bootstrap.js&quot;&gt;&lt;/script&gt;                                  </code></pre>
+&lt;script src=&quot;{path}/node_modules/jquery/dist/jquery.js&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;{path}/node_modules/bootstrap/dist/js/bootstrap.js&quot;&gt;&lt;/script&gt;                                  </code></pre>
                 <p>Before our own <strong>javascript</strong> file.</p>
             </section>
 
