@@ -94,14 +94,9 @@
             <section>
                 <p>We use bower to install AngularJS in our project:</p>
                 <pre><code lang="console" data-trim>
-$ bower install angular --save
-bower angular#*                 cached git://github.com/angular/bower-angular.git#1.4.5
-bower angular#*               validate 1.4.5 against git://github.com/angular/bower-angular.git#*
-bower angular#~1.4.5           install angular#1.4.5
-
-angular#1.4.5 angular
+$ npm install angular --save
                 </code></pre>
-                <p>The dependencies section of our <strong>bower.js</strong> looks like:</p>
+                <p>The dependencies section of our <strong>package.js</strong> looks like:</p>
                 <pre><code lang="json" data-trim>
 &quot;dependencies&quot;: {
     &quot;angular&quot;: &quot;~1.4.5&quot;,
@@ -124,8 +119,8 @@ angular#1.4.5 angular
         &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=edge&quot;&gt;
         &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;&gt;
         &lt;title&gt;My first AngularJS&lt;/title&gt;
-        &lt;script src=&quot;../bower_components/jquery/dist/jquery.min.js&quot;&gt;&lt;/script&gt;
-        &lt;script src=&quot;../bower_components/angular/angular.min.js&quot;&gt;&lt;/script&gt;
+        &lt;script src=&quot;{path}/node_modules/jquery/dist/jquery.js&quot;&gt;&lt;/script&gt;
+        &lt;script src=&quot;{path}/node_modules/angular/angular.js&quot;&gt;&lt;/script&gt;
     &lt;/head&gt;
     &lt;body&gt;
     &lt;div&gt;
@@ -138,7 +133,7 @@ angular#1.4.5 angular
 &lt;/html&gt;
                 </code></pre>
             </section>
-            
+
             <section>
                 <p>This is the final result:</p>
                 <p class="center">
@@ -166,8 +161,8 @@ angular#1.4.5 angular
             <section>
                 <p>Finally, include this in the <strong>head</strong> element:</p>
                 <pre><code lang="html" data-trim>
-&lt;script src=&quot;../bower_components/jquery/dist/jquery.min.js&quot;&gt;&lt;/script&gt;
-&lt;script src=&quot;../bower_components/angular/angular.min.js&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;{path}/node_modules/jquery/dist/jquery.js&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;{path}/node_modules/angular/angular.js&quot;&gt;&lt;/script&gt;
                 </code></pre>
                 <p>We are including both: <a href="http://jquery.com/" target="_blank"><strong>jQuery</strong></a> and <strong>AngularJS</strong> itself.</p>
             </section>
@@ -190,8 +185,8 @@ angular#1.4.5 angular
     &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=edge&quot;&gt;
     &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;&gt;
     &lt;title&gt;Adding two numbers in AngularJS&lt;/title&gt;
-    &lt;script src=&quot;../bower_components/jquery/dist/jquery.min.js&quot;&gt;&lt;/script&gt;
-    &lt;script src=&quot;../bower_components/angular/angular.min.js&quot;&gt;&lt;/script&gt;
+    &lt;script src=&quot;{path}/node_modules/jquery/dist/jquery.min.js&quot;&gt;&lt;/script&gt;
+    &lt;script src=&quot;{path}/node_modules/angular/angular.min.js&quot;&gt;&lt;/script&gt;
 &lt;/head&gt;
 &lt;body&gt;
 &lt;div&gt;
