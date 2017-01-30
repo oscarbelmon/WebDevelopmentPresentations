@@ -79,7 +79,7 @@
         <section id="what_are_directives">
             <h3>What are AngularJS directives?</h3>
             <section>
-                <p>Taken form the <strong>Angular</strong> web page:</p>
+                <p>Taken from the <strong>Angular</strong> web page:</p>
                 <blockquote>
                     At a high level, directives are markers on a DOM element (such as an attribute, element name, comment or CSS class) that tell AngularJS's HTML compiler ($compile) to attach a specified behavior to that DOM element (e.g. via event listeners), or even to transform the DOM element and its children.
                 </blockquote>
@@ -195,7 +195,7 @@ app.controller("TheController", ["$scope", function($scope) {
         <section id="geotodo">
             <h3>The GeoTODO project</h3>
             <section>
-                <p>Let's sum app all technologies we have seen to build a something fancy.</p>
+                <p>Let's sum app all technologies we have seen to build something fancy.</p>
                 <p>First, let's see how to add a marker to our map. Add a new attribute <strong>makers</strong> to the <strong>leaflet</strong> element.</p>
                 <pre><code lang="html" data-trim>
 &lt;leaflet tiles=&quot;castellon&quot; lf-center=&quot;castellon&quot; markers=&quot;markers&quot; height=&quot;480px&quot; width=&quot;100%&quot;&gt;&lt;/leaflet&gt;
@@ -221,7 +221,7 @@ $scope.$on("leafletDirectiveMap.click", function (event,args) {
                 <ol>
                     <li>We are listening to <strong>leafletDirectiveMap.click</strong> events.</li>
                     <li>We define a <strong>function</strong> as listener.</li>
-                    <li>This function receives to parameters, the event and information about the event.</li>
+                    <li>This function receives to parameters, the event and the arguments which have information about the event.</li>
                     <li>For this event the information is the coordinates (lat, lng).</li>
                 </ol>
             </section>
