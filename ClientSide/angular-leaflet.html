@@ -467,12 +467,15 @@ function reverseGeocoding(latlng) {
 }
 
 function addMarker(response) {
-    $scope.markers.push({
-        lat: latlng.lat,
-        lng: latlng.lng,
+    var marker = {
+        lat: parseFloat(response.data.lat),
+        lng: parseFloat(response.data.lon),
         message: "Hello",
-        dueDate: new Date()
-    });
+        dueDate: new Date(),
+        postalAddress: response.data.display_name
+    };
+    $scope.markers.push(marker);
+    $scope.currentMarker = marker;
 }
                 </code></pre>
                 <p>The <strong>reverseGeocoding(latlng)</strong> function is the key point.</p>
