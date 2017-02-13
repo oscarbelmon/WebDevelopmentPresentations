@@ -371,8 +371,8 @@ app.delete("/catalog/:id", function(req, res, next) {
             <section>
                 <p>Express provides an easy way to serve static files:</p>
                 <pre><code lang="javascript" data-trim="">
-app.use(express.static(__dirname + "/../node_modules"));
-app.use(express.static(__dirname + '/public'));
+app.use(express.static("/../node_modules"));
+app.use(express.static('/public'));
                 </code></pre>
                 <p>With this, express will serve the files in the /../node_modules and /public folders.</p>
             </section>
