@@ -82,7 +82,7 @@
         <section id="what_is_node">
             <h3>What is Node.js</h3>
             <section>
-                <img src="../Presentation/img/node-logo.svg" height="200px" src="img/node-logo.svg" style="background: #000000">
+                <img src="../Presentation/img/node-logo.svg" height="200px" style="background: #000000">
                 <blockquote>Node.js is a JavaScript runtime built on Chrome's V8 JavaScript engine. Node.js uses an event-driven, non-blocking I/O model that makes it lightweight and efficient. Node.js' package ecosystem, npm, is the largest ecosystem of open source libraries in the world.</blockquote>
                 <blockquote>As an asynchronous event driven framework, Node.js is designed to build scalable network applications.</blockquote>
             </section>
@@ -152,14 +152,20 @@ Is this ok? (yes)
             <section>
                     <p>Create a <strong>index.js</strong> file with the following code:</p>
                 <pre><code lang="javascript" data-trim>
-var http = require('http');
+const http = require('http');
 
-http.createServer(function (req, res) {
-    res.writeHead(200, {'Content-Type': 'text/plain'});
-    res.end('Hello World\n');
-}).listen(3000, &quot;127.0.0.1&quot;);
+const hostname = '127.0.0.1';
+const port = 3000;
 
-console.log('Server running at http://127.0.0.1:3000/');
+const server = http.createServer((req, res) =&gt; {
+  res.statusCode = 200;
+  res.setHeader('Content-Type', 'text/plain');
+  res.end('Hello World\n');
+});
+
+server.listen(port, hostname, () =&gt; {
+  console.log(`Server running at http://${hostname}:${port}/`);
+});
                 </code></pre>
             </section>
         </section>
@@ -196,14 +202,20 @@ Server running at http://127.0.0.1:3000/
             <h3>The server code in detail</h3>
             <section>
                 <pre><code lang="javascript" data-trim>
-var http = require('http'); // The http module is loaded.
+const http = require('http'); // http module loaded
 
-http.createServer(function (req, res) { // We create the server. req is the request object. res is the response object.
-    res.writeHead(200, {'Content-Type': 'text/plain'}); // These are the Status Code (200=OK) and header response.
-    res.end('Hello World\n'); // This is the response content.
-}).listen(3000, &quot;127.0.0.1&quot;); // It starts to listen.
-
-console.log('Server running at http://127.0.0.1:3000/');
+const hostname = '127.0.0.1';
+const port = 3000;
+// We create the server
+const server = http.createServer((req, res) =&gt; {
+  res.statusCode = 200; // Status code
+  res.setHeader('Content-Type', 'text/plain'); // Response content type
+  res.end('Hello World\n'); // Response body
+});
+// The server stasts listening
+server.listen(port, hostname, () =&gt; {
+  console.log(`Server running at http://${hostname}:${port}/`);
+});
                 </code></pre>
                 <p class="fragment">Although you can develop your server web application directly using <strong>NodeJS</strong>, there are frameworks that help you in creatring your applications.</p>
                 <p class="fragment"><strong>ExpressJS</strong> is one of such frameworks. It is addressed to easy the development of web applications that adhere the RESTful architectural style. We will see this framework in the next course chapter.</p>
