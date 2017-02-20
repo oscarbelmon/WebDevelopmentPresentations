@@ -322,6 +322,16 @@ app.post("/catalog", function(req, res, next) {
     // Add your code here.
 }
                 </code></pre>
+                <p>
+                  To gain access to the body of the request, install <strong>body-parser</strong> dependency on your project: <strong>npm install --save body-parser</strong>.
+                </p>
+                <pre><code lang="javascript" data-trim="">
+var bodyParser = require("body-parser");
+app.use(bodyParser.json());
+                </code></pre>
+                <p>
+                  Now, you can get the body of the request doing: <strong>req.body</strong>.
+                </p>
             </section>
 
             <section>
