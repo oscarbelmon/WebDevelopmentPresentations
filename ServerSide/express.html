@@ -282,7 +282,7 @@ catalog[0] = {id:0, name: "USB drive", price: 10};
 
 app.get("/", function(req,res) {
     res.json(catalog);
-}
+});
                 </code></pre>
             </section>
 
@@ -299,7 +299,7 @@ app.get("/", function(req,res) {
                 <pre><code lang="javascript" data-trim="">
 app.get("/catalog/:id", function(req, res, next) {
     // Add your code here.
-}
+});
                 </code></pre>
                 <p><strong>Help 1:</strong> to get the request parameter <strong>id</strong> use <strong>req.params.id</strong></p>
                 <p><strong>Help 2:</strong> the third parameter in the function, <strong>next</strong>, is used to throw an error. So, if there is no product with code <stron>id</stron> you can throw an error <strong>next("No product with code " + id + " found.");</strong>.</p>
@@ -320,7 +320,7 @@ app.get("/catalog/:id", function(req, res, next) {
                 <pre><code lang="javascript" data-trim="">
 app.post("/catalog", function(req, res, next) {
     // Add your code here.
-}
+});
                 </code></pre>
                 <p>
                   To gain access to the body of the request, install <strong>body-parser</strong> dependency on your project: <strong>npm install --save body-parser</strong>.
@@ -348,7 +348,7 @@ app.use(bodyParser.json());
                 <pre><code lang="javascript" data-trim="">
 app.put("/catalog/:id", function(req, res, next) {
     // Add your code here.
-}
+});
                 </code></pre>
             </section>
 
@@ -366,7 +366,7 @@ app.put("/catalog/:id", function(req, res, next) {
                 <pre><code lang="javascript" data-trim="">
 app.delete("/catalog/:id", function(req, res, next) {
     // Add your code here.
-}
+});
                 </code></pre>
             </section>
 
