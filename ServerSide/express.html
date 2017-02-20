@@ -255,7 +255,7 @@ app.get('/', function (req, res) {
                     </thead>
                     <tbody>
                         <tr><td>Create</td><td>POST</td><td>Creates a new resource</td></tr>
-                        <tr><td>Retrieve</td><td>DELETE</td><td>Gets an existing resource</td></tr>
+                        <tr><td>Retrieve</td><td>GET</td><td>Gets an existing resource</td></tr>
                         <tr><td>Update</td><td>PUT</td><td>Updates an existing resource</td></tr>
                         <tr><td>Delete</td><td>DELETE</td><td>Deletes an existing resource</td></tr>
                     </tbody>
@@ -322,6 +322,16 @@ app.post("/catalog", function(req, res, next) {
     // Add your code here.
 }
                 </code></pre>
+                <p>
+                  To gain access to the body of the request, install <strong>body-parser</strong> dependency on your project: <strong>npm install --save body-parser</strong>.
+                </p>
+                <pre><code lang="javascript" data-trim="">
+var bodyParser = require("body-parser");
+app.use(bodyParser.json());
+                </code></pre>
+                <p>
+                  Now, you can get the body of the request doing: <strong>req.body</strong>.
+                </p>
             </section>
 
             <section>
