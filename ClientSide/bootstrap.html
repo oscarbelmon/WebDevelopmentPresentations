@@ -203,7 +203,7 @@ npm WARN first_project@1.0.0 No repository field.
         <section id="creating_first_bootstrap">
             <h3>Creating our first Bootstrap Web page</h3>
             <section>
-                <p>Let's create our first static web page with standard <strong>HTML</strong>:</p>
+                <p>Let's create our first static web page with standard <strong>HTML</strong>. Create a new file (example: index.html) with the following content:</p>
                 <pre><code class="html" data-trim>
 &lt;!doctype html&gt;
 &lt;html lang=&quot;en&quot;&gt;
@@ -333,7 +333,7 @@ npm WARN first_project@1.0.0 No repository field.
             </section>
 
             <section>
-                <p>Let's move the data to a javascript array. So, let's create a new file <strong>js/dataSourde.js</strong>, an type in:</p>
+                <p>Let's move the data to a javascript array. So, let's create a new file <strong>js/dataSource.js</strong>, an type in:</p>
                 <pre><code lang="javascript" data-trim>
 var people = [
     {
@@ -398,8 +398,8 @@ var getData = function() {
             </section>
 
             <section>
-                <p>The buttons work, but they do nothing useful right now. It would be fancy if we can get the detail for each person by pressing each button.</p>
-                <p>Let's use a <strong>Modal</strong> window, note the <strong>id</strong> name and surname:</p>
+                <p>The buttons work, but they do nothing useful right now. It would be fancy if we can get for each person his/her detailed information by pressing each Info button.</p>
+                <p>For doint that, let's use a <strong>Modal</strong> window. Note the <strong>id</strong> name and surname:</p>
                 <pre><code lang="html" data-trim>
 &lt;!-- Modal --&gt;
 &lt;div class=&quot;modal fade&quot; id=&quot;myModal&quot; tabindex=&quot;-1&quot; role=&quot;dialog&quot; aria-labelledby=&quot;myModalLabel&quot;&gt;
@@ -423,11 +423,11 @@ var getData = function() {
             </section>
 
             <section>
-                <p>Fine, now, let's link each button with the modal (be careful, this is a long line of code):</p>
+                <p>Fine, now, let's link each button with the modal window (be careful, this is a long line of code):</p>
                 <pre><code lang="javascript" data-trim>
 text += &quot;&lt;tr&gt;&lt;td&gt;&quot; + people[i].name + &quot;&lt;/td&gt;&lt;td&gt;&quot; + people[i].surname + &quot;&lt;/td&gt;&lt;td&gt;&lt;button type=&#39;button&#39; class=&#39;btn btn-info&#39; data-toggle=&#39;modal&#39; data-target=&#39;#myModal&#39; onclick=&#39;currentIndex(&quot; + i + &quot;)&#39;&gt;Info&lt;/button&gt;&lt;/td&gt;&lt;/tr&gt;&quot;;
                 </code></pre>
-                <p>And finally the <strong>javascript</strong> function that updates the current index for the data:</p>
+                <p>And finally the <strong>javascript</strong> function that updates the current index for the data (js/dataSource.js):</p>
                 <pre><code lang="javascript" data-trim>
 var currentIndex = function(index) {
     document.getElementById("name").innerHTML = people[index].name;
@@ -445,7 +445,7 @@ var currentIndex = function(index) {
         <section id="grid_system">
             <h3>The grid system</h3>
             <section>
-                <p>The grid system provides us with an easy way to stack the content of a web page:</p>
+                <p>The <a href="https://getbootstrap.com/docs/3.3/css/#grid" target="_blank">grid system</a> provides us with an easy way to stack the content of a web page:</p>
                 <pre><code lang="html" data-trim=>
 &lt;div class=&quot;container&quot;&gt;
     &lt;div class=&quot;starter-template&quot;&gt;
@@ -485,7 +485,7 @@ var currentIndex = function(index) {
             <section>
                 <p>We have seen how to easily and quickly create the GUI of our web page application using Bootstrap.</p>
                 <p>It provide us with a full set of components, and commodity css classes to define the layout of our applications.</p>
-                <p>We have only seen a sneak peed of all functionality it provides.</p>
+                <p>We have only seen a sneak peek of all functionality it provides.</p>
             </section>
         </section>
 
