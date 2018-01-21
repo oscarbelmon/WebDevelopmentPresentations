@@ -59,7 +59,7 @@
             <section>
                 <p>The Model-View-Controller design pattern is an extensively used pattern when designing applications with a Graphical User Interface (GUI).</p>
                 <p>The principle underneath is to provide each piece of software with an unique and well define purpose.</p>
-                <p><strong>AngularJS</strong> implements this design patter, so we use it to build our GUI making use of such a design patter.</p>
+                <p><strong>AngularJS</strong> implements this design patter, so we use it to build our GUI, making use of such a design patter.</p>
                 <p><strong>AngularJS</strong> heavily uses javascript, so anything you already know about javascript can be used in <strong>AngularJS</strong>.</p>
             </section>
         </section>
@@ -110,7 +110,7 @@ $ npm install angular --save
         <section id="data_binding">
             <h3>Data binding</h3>
             <section>
-                <p>As a first example on AngularJS power lets see how data binding works.</p>
+                <p>As a first example on the AngularJS power lets see how data binding works.</p>
                 <pre><code lang="html" data-trim>
 &lt;!DOCTYPE html&gt;
 &lt;html lang=&quot;en&quot; ng-app&gt;
@@ -176,7 +176,7 @@ $ npm install angular --save
             </section>
 
             <section>
-                <p>Let's see some other <strong>AngluarJS</strong> directives:</p>
+                <p>Let's see some other <strong>AngluarJS</strong> directives. Create a new html file with the following content:</p>
                 <pre><code lang="html" data-trim>
 &lt;!DOCTYPE html&gt;
 &lt;html lang=&quot;en&quot; ng-app&gt;
@@ -205,8 +205,8 @@ $ npm install angular --save
                 </p>
                 <p>Things to note:</p>
                 <ul>
-                    <li>You can have more that one data-model in your code.</li>
-                    <li>The text inputs have an initial value of 0.</li>
+                    <li>You can have more that one <strong>&lt;ng-model&gt;</strong> tag in your code.</li>
+                    <li>The text inputs have an initial value of 0 (<strong>&lt;ng-init&gt;</strong>).</li>
                     <li>You can embed arithmetic inside curly braces.</li>
                 </ul>
             </section>
@@ -246,7 +246,14 @@ $ npm install angular --save
                 <pre><code lang="html" data-trim>
                     &lt;html lang=&quot;en&quot; ng-app=&quot;app&quot;&gt;
                 </code></pre>
-                <p>Second let's inject the controller:</p>
+                <p>
+                  Second, let's add the dependencies:
+                </p>
+                <pre><code data-trim>
+&lt;script src=&quot;{path}/node_modules/jquery/dist/jquery.js&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;{path}/node_modules/angular/angular.js&quot;&gt;&lt;/script&gt;
+                </code></pre>
+                <p>Third let's inject the controller:</p>
                 <pre><code lang="html" data-trim>
                     &lt;body ng-controller=&quot;MyController as myController&quot;&gt;
                 </code></pre>
@@ -266,11 +273,13 @@ $ npm install angular --save
                 &lt;tr ng-repeat=&quot;person in people&quot;&gt;
                     &lt;td&gt;{{person.name}}&lt;/td&gt;
                     &lt;td&gt;{{person.surname}}&lt;/td&gt;
-                    &lt;td&gt;&lt;button type=&quot;button&quot; class=&quot;btn btn-info&quot; data-toggle=&quot;modal&quot; data-target=&quot;#myModal&quot; ng-click=&quot;currentPerson($index)&quot;&gt;Info&lt;/button&gt;&lt;/td&gt;
+                    &lt;td&gt;&lt;button type=&quot;button&quot; class=&quot;btn btn-info&quot; data-toggle=&quot;modal&quot;
+                      data-target=&quot;#myModal&quot; ng-click=&quot;currentPerson($index)&quot;&gt;Info&lt;/button&gt;&lt;/td&gt;
                 &lt;/tr&gt;
             &lt;/tbody&gt;
         &lt;/table&gt;
     &lt;/div&gt;
+&lt;/div&gt;
                 </code></pre>
             </section>
 
@@ -288,6 +297,8 @@ angular.module(&quot;app&quot;, [])
                 name:&quot;Mar&iacute;a del Carmen&quot;,
                 surname:&quot;Erdozain&quot;
             },....
+        ];
+      });
                 </code></pre>
             </section>
 
