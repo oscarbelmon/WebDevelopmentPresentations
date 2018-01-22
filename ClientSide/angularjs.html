@@ -58,8 +58,8 @@
             <h3>Introduction</h3>
             <section>
                 <p>The Model-View-Controller design pattern is an extensively used pattern when designing applications with a Graphical User Interface (GUI).</p>
-                <p>The principle underneath is to provide each piece of software with an unique and well define purpose.</p>
-                <p><strong>AngularJS</strong> implements this design patter, so we use it to build our GUI, making use of such a design patter.</p>
+                <p>The principle underneath is to provide each piece of software with an unique and well defined purpose.</p>
+                <p><strong>AngularJS</strong> implements this design pattern, so we use it to build our GUI, making use of such a design pattern.</p>
                 <p><strong>AngularJS</strong> heavily uses javascript, so anything you already know about javascript can be used in <strong>AngularJS</strong>.</p>
             </section>
         </section>
@@ -103,14 +103,14 @@ $ npm install angular --save
     &quot;bootstrap&quot;: &quot;~3.3.5&quot;
 }
                 </code></pre>
-                <p>Now, we are ready to use AngularJS in out project.</p>
+                <p>Now we are ready to use AngularJS in our project.</p>
             </section>
         </section>
 
         <section id="data_binding">
             <h3>Data binding</h3>
             <section>
-                <p>As a first example on the AngularJS power lets see how data binding works.</p>
+                <p>As a first example of the power of AngularJS, let's see how data binding works.</p>
                 <pre><code lang="html" data-trim>
 &lt;!DOCTYPE html&gt;
 &lt;html lang=&quot;en&quot; ng-app&gt;
@@ -205,7 +205,7 @@ $ npm install angular --save
                 </p>
                 <p>Things to note:</p>
                 <ul>
-                    <li>You can have more that one <strong>&lt;ng-model&gt;</strong> tag in your code.</li>
+                    <li>You can have more than one <strong>&lt;ng-model&gt;</strong> tag in your code.</li>
                     <li>The text inputs have an initial value of 0 (<strong>&lt;ng-init&gt;</strong>).</li>
                     <li>You can embed arithmetic inside curly braces.</li>
                 </ul>
@@ -215,21 +215,21 @@ $ npm install angular --save
         <section id="separation_of_concerns">
             <h3>Separation of concerns</h3>
             <section>
-                <p>A general good practice in programming is <strong>Separation of concerns</strong>. The basic idea behind is to segregate responsibilities between modules/actor/components/... and do not mix them in the same module/actor/component.</p>
+                <p>A general good practice in programming is <strong>separation of concerns</strong>. The basic idea behind it is to seperate the responsibilities of modules/actors/components/... and not to mix them in the same module/actor/component.</p>
                 <p>The <strong>MVC</strong> design pattern is a particular case of separation of concerns. Three different concerns are defined:</p>
                 <ul>
                     <li><strong>Model</strong>: All data and any logic to manipulate it (typically: create, retrieve, update and delete operations). </li>
                     <li><strong>View</strong>: Anything related with the visualization of the data retreived from the model. Any change in the <strong>Model</strong> will refresh the <strong>View</strong>.</li>
-                    <li><strong>Controller</strong>: This connects interactions with the View into changes in the Model.</li>
+                    <li><strong>Controller</strong>: This connects interactions with the View with changes in the Model.</li>
                 </ul>
             </section>
 
             <section>
-                <p>In the case of a Web application:</p>
+                <p>In the case of a web application:</p>
                 <ul>
                     <li>Model: the data to be rendered on the browser, typically in <a href="http://json.org/" target="_blank">json</a> format.</li>
-                    <li>View: the web page content, defined using <a href="http://www.w3.org/standards/webdesign/htmlcss" target="_blank">HTML</a> and stylized using <a href="http://www.w3.org/standards/webdesign/htmlcss" target="_blank">CSS</a> </li>
-                    <li>Controller: the glue between the Model and the View, written using Javascript.</li>
+                    <li>View: the web page content, defined using <a href="http://www.w3.org/standards/webdesign/htmlcss" target="_blank">HTML</a> and styled using <a href="http://www.w3.org/standards/webdesign/htmlcss" target="_blank">CSS</a>.</li>
+                    <li>Controller: the glue between the Model and the View, written in Javascript.</li>
                 </ul>
             </section>
         </section>
@@ -340,7 +340,7 @@ $scope.currentPerson = function (index) {
             <h3>Summary</h3>
             <section>
                 <p>We have seen a step by step tutorial on how to <em>Angularize</em> our javascript Web applications.</p>
-                <p>The benefit of using <strong>AngularJS</strong> is we can independently build each part of our Web application.</p>
+                <p>The benefit of using <strong>AngularJS</strong> is that we can build each part of our web application independently.</p>
                 <p>We have seen how to build the GUI using <strong>HTML</strong> and how to bind the data to that provided by a <strong>Controller</strong>.</p>
                 <p>In the second part of the course, we will see how to provide the data to our controller by means of a server application.</p>
             </section>
