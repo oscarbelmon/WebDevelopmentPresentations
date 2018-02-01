@@ -57,8 +57,8 @@
         <section>
             <h3>Introduction</h3>
             <section>
-                <p>Typically, a Web application consists of two parts: the client part which is downloaded and executed in the browser; and the server part, which provides the data management through Internet.</p>
-                <p>So far, we have seen how to use <strong>javascript</strong> to write the client side of our applications, now I am presenting you how to develop the server side programmed in <strong>javascript</strong> too.</p>
+                <p>Typically, a web application consists of two parts: the client part which is downloaded and executed in the browser; and the server part, which provides the data management through internet.</p>
+                <p>So far, we have seen how to use <strong>javascript</strong> to write the client side of our applications. Now I am showing you how to develop the server side programmed in <strong>javascript</strong> too.</p>
                 <p><strong>Node</strong> is a mature technology to create server side applications written in javascript.</p>
             </section>
         </section>
@@ -74,7 +74,7 @@
                     <li><a href="#/stopping_server">Stopping the server</a>.</li>
                     <li><a href="#/code_detail">The server code in detail</a>.</li>
                     <li><a href="#/summary">Summary</a>.</li>
-                    <li><a href="#/exercises">Exercises.</a></li>
+                    <li><a href="#/exercises">Exercises</a>.</li>
                 </ol>
             </section>
         </section>
@@ -110,7 +110,7 @@ name: (Remove)
             </section>
 
             <section>
-                <p>Type in the name of your new project using lowercase.</p>
+                <p>Type in the name of your new project in lowercase.</p>
                 <pre><code lang="console" data-trim="">
 name: (Remove) remove
 version: (1.0.0)
@@ -125,7 +125,7 @@ license: (ISC)
             </section>
 
             <section>
-                <p>Finally, you will see a summary of the new project:</p>
+                <p>In the end, you will see a summary of the new project:</p>
                 <pre><code lang="console" data-trim>
 About to write to /home/oscar/Oscar/Tmp/Remove/package.json:
 
@@ -146,11 +146,11 @@ Is this ok? (yes)
 
             <section>
                 <p>You can check that a new file <strong>package.json</strong> has been created.</p>
-                <p>This file constains a description on how to build up your project, more about it in the next chapter.</p>
+                <p>This file contains a description of how to build your project. We'll learn more about it in the next chapter.</p>
             </section>
 
             <section>
-                    <p>Create a <strong>index.js</strong> file with the following code:</p>
+                    <p>Create an <strong>index.js</strong> file with the following code:</p>
                 <pre><code lang="javascript" data-trim>
 const http = require('http');
 
@@ -178,14 +178,14 @@ server.listen(port, hostname, () =&gt; {
 $ node index.js
 Server running at http://127.0.0.1:3000/
                 </code></pre>
-                <p>A message in the screen tells us that the server is running.</p>
+                <p>The message on the screen tells us that the server is running.</p>
             </section>
         </section>
 
         <section id="checking_running">
             <h3>Checking if the server is running</h3>
             <section>
-                <p>Just, open a web browser and type: http://localhost:3000, then press enter.</p>
+                <p>Just open a web browser, type http://localhost:3000, and then press enter.</p>
                 <img src="img/webServer.png" width="500px">
             </section>
         </section>
@@ -217,16 +217,16 @@ server.listen(port, hostname, () =&gt; {
   console.log(`Server running at http://${hostname}:${port}/`);
 });
                 </code></pre>
-                <p class="fragment">Although you can develop your server web application directly using <strong>NodeJS</strong>, there are frameworks that help you in creatring your applications.</p>
-                <p class="fragment"><strong>ExpressJS</strong> is one of such frameworks. It is addressed to easy the development of web applications that adhere the RESTful architectural style. We will see this framework in the next course chapter.</p>
+                <p class="fragment">Although you can develop your server web application directly using <strong>NodeJS</strong>, there are frameworks that help you create your applications.</p>
+                <p class="fragment"><strong>ExpressJS</strong> is one such frameworks. It is intended to ease the development of web applications that adhere to the RESTful architectural style. We will see this framework in the next course chapter.</p>
             </section>
         </section>
 
         <section id="summary">
             <h3>Summary</h3>
             <section>
-                <p><strong>Node</strong> provide us with the basics to build server application written in javascript.</p>
-                <p><a href="http://nodeschool.io/">Node school</a> is a very useful web site to learn node and other related technologies.</p>
+                <p><strong>Node</strong> provides us with the basics to build a server application written in javascript.</p>
+                <p><a href="http://nodeschool.io/">Node school</a> is a very useful website for learning node and other related technologies.</p>
             </section>
         </section>
 
@@ -234,9 +234,9 @@ server.listen(port, hostname, () =&gt; {
             <h3>Exercises</h3>
             <section>
                 <ol>
-                    <li>Write a server web application which will show your name when someone connects to it.</li>
+                    <li>Write a server web application that shows your name when someone connects to it.</li>
                     <li>Change the listening port of the web server application to 3030.</li>
-                    <li>Start two different web server applications in different listening ports.</li>
+                    <li>Start two different web server applications on different listening ports.</li>
                 </ol>
             </section>
         </section>
